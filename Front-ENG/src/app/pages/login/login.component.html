@@ -1,0 +1,15 @@
+
+
+  <form>
+    <h4>Login</h4>
+
+    <label for="matricula">Matrícula</label>
+    <input type="number" [formControl]="matricula" maxlength="8" placeholder="Matrícula" id="matricula" />
+
+    <label for="senha">Senha</label>
+    <input type="password" [formControl]="senha" placeholder="Senha" id="senha" />
+    
+    <button (submit)="onSubmit()">Log In</button>
+    <a routerLink="/register"> Não sou cadastrado.</a>
+  </form>
+

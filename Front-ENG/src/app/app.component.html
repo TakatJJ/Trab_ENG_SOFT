@@ -1,0 +1,35 @@
+<nav
+  class="navbar bg-body-tertiary fixed-top px-5"
+  style="
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 2px;
+    height: min-content;
+  "
+>
+  <div class="container">
+    <a href="/home" class="navbar-brand">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Logo_UFRGS_formato_SVG-01.svg"
+        width="60"
+        height="20"
+        alt="UFRS Hotel"
+        class="img-fluid logo"
+        style="align-items: end"
+      />
+      UniPlace
+    </a>
+
+    <a
+      *ngFor="let item of menuItems"
+      class="btn btn-outline-danger"
+      routerLink="/{{ item.path }}"
+      routerLinkActive="active"
+      >{{ item.name }}</a
+    >
+  </div>
+</nav>
+
+<div class="center_div">
+  <router-outlet></router-outlet>
+</div>
