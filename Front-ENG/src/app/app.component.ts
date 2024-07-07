@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, makeStateKey } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { LocalStorageService } from './services/local-storage.service';
+import { AuthService } from './services/auth-service.service';
+import { BackAPIService } from './services/back-api.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +13,20 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  constructor() {}
-  ngOnInit(): void {}
+  isLoggedIn:boolean = false;
+  constructor
+  (
+    private API: BackAPIService
+  ) 
+  {
+  }
+  ngOnInit(): void 
+  {
+    this.API.authStatus.currentState.subscribe((state) => {
+      this.isLoggedIn = state;
+    });
+  }
   menuItems = [
-    { name: 'Criar Anúncios', path: '/create' },
-    { name: 'Procurar Anúncios', path: '/search'},
-    { name: 'Login', path: '/login' },
-    { name: 'Cadastrar', path: '/register' },
     { name: 'Contate-nos', path: '/contact' },
     { name: 'Sobre', path: '/about' },
   ];

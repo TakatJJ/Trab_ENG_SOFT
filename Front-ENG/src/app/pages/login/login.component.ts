@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, makeStateKey } from '@angular/core';
 import { BackAPIService } from '../../services/back-api.service';
-import { User } from '../../models/user';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -14,18 +14,19 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(public API: BackAPIService) {}
-  matricula = new FormControl();
-  senha = new FormControl();
+  constructor(
+    public API: BackAPIService,
+  ) 
+  {}
+
+  matricula = new FormControl(0,[Validators.required, Validators.minLength(6), Validators.maxLength(8)]);
+  senha = new FormControl("",[Validators.required]);
+
   onSubmit() {
-    console.log(
-      'matricula: ' + this.matricula.value + ' password: ' + this.senha.value
-    );
-    this.API.getLoginResponse(this.matricula.value, this.senha.value);
+    this.API.getLoginResponse(this.matricula.value!, this.senha.value!);
   }
+
   onClick() {
-    console.log(
-      'matricula: ' + this.matricula.value + ' password: ' + this.senha.value
-    );
+    this.API.authStatus.login();
   }
 }

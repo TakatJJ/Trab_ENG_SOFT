@@ -8,7 +8,9 @@
   "
 >
   <div class="container">
-    <a href="/home" class="navbar-brand">
+    <a routerLink="/home"
+    routerLinkActive="active"
+     class="navbar-brand">
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Logo_UFRGS_formato_SVG-01.svg"
         width="60"
@@ -20,6 +22,46 @@
       UniPlace
     </a>
 
+    <a 
+    *ngIf="isLoggedIn"
+    class="btn btn-outline-danger"
+    routerLink="/create-ad"
+    routerLinkActive="active"
+    >Criar anúncio</a>
+
+    <a
+      *ngIf="isLoggedIn"
+      class="btn btn-outline-danger"
+      routerLink="/search"
+      routerLinkActive="active"
+      >Buscar Apê</a>
+
+    <a
+      *ngIf="!isLoggedIn"
+      class="btn btn-outline-danger"
+      routerLink="/login"
+      routerLinkActive="active"
+      >Login</a>
+
+    <a
+      *ngIf="isLoggedIn"
+      class="btn btn-outline-danger"
+      routerLink="/profile"
+      routerLinkActive="active"
+      >Profile</a>
+    
+    <a
+      *ngIf="isLoggedIn"
+      class="btn btn-outline-danger"
+      routerLink="/logout"
+      routerLinkActive="active"
+      >Logout</a>
+    <a
+      *ngIf="!isLoggedIn"
+      class="btn btn-outline-danger"
+      routerLink="/register"
+      routerLinkActive="active"
+      >Register</a>
     <a
       *ngFor="let item of menuItems"
       class="btn btn-outline-danger"
@@ -27,6 +69,10 @@
       routerLinkActive="active"
       >{{ item.name }}</a
     >
+
+    
+    
+ 
   </div>
 </nav>
 
