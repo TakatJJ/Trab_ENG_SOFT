@@ -3,14 +3,13 @@ import { Component, makeStateKey } from '@angular/core';
 import { BackAPIService } from '../../services/back-api.service';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth-service.service';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
-  providers: [BackAPIService],
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
@@ -23,7 +22,7 @@ export class LoginComponent {
   senha = new FormControl("",[Validators.required]);
 
   onSubmit() {
-    this.API.getLoginResponse(this.matricula.value!, this.senha.value!);
+    this.API.GETLoginResponse(this.matricula.value!, this.senha.value!);
   }
 
   onClick() {
