@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     });
   }
   menuItems = [
-    { name: 'Contate-nos', path: '/contact' },
+    // { name: 'Contate-nos', path: '/contact' },
     { name: 'Sobre', path: '/about' },
   ];
 }

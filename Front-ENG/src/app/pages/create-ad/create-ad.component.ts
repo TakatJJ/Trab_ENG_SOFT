@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { BackAPIService } from '../../services/back-api.service';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { courses } from '../../enums/courses';
+import { Advertisement } from '../../models/Advertisement';
 
 @Component({
   selector: 'app-create-ad',
@@ -12,21 +12,34 @@ import { courses } from '../../enums/courses';
   styleUrl: './create-ad.component.css'
 })
 export class CreateADComponent {
-  API : BackAPIService;
-  constructor(private APIService:BackAPIService) 
+  private API : BackAPIService;
+  constructor( APIService: BackAPIService) 
   {
     this.API = APIService;
   }
-  
+
+  fotos: Array<File> = [];
+
   Advertisement = new FormGroup({
     title : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
     description : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(500)]),
     price : new FormControl(0,[Validators.required, Validators.min(1)]),
     location : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
     numberOfRooms : new FormControl(1,[Validators.required, Validators.min(1)]),
-    fotos: new FormControl('', [Validators.required])
   })
   onSubmit() {
-    this.API.POSTCreateAd(this.Advertisement);
+    const newAD = new Advertisement(this.Advertisement, this.API.storage.get('matricula'), this.fotos);
+    this.API.POSTCreateAd(newAD);
+  }
+
+  onChange(event: any) {
+    if (event.target.files.length > 0) 
+    {
+      this.fotos = []
+      const fileArray: FileList = event.target.files;
+      for (let i = 0; i < fileArray.length; i++) {
+        this.fotos.push(fileArray[i]);
+      };
+    }
   }
 }

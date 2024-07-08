@@ -2,12 +2,12 @@
 <form [formGroup]="Advertisement">
     <h5>Criar Anúncio.</h5>
     <div class="form-group">
-      <label for="foto">Fotos do Apartartamento</label>
+      <label for="foto">Fotos da Residência</label>
       <input
         type="file"
         class="form-control"
         id="foot"
-        formControlName="fotos"
+        (change)="onChange($event)"
         placeholder="Fotos do Anúncio"
         accept="image/*"
         multiple

@@ -1,9 +1,11 @@
 import { Injectable, makeStateKey } from '@angular/core';
-import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse, provideHttpClient } from '@angular/common/http';
 import { delay, pipe } from 'rxjs';
 import { AuthService } from './auth-service.service';
-import { Form, FormGroup } from '@angular/forms';
 import { LocalStorageService } from './local-storage.service';
+import { Advertisement} from '../models/Advertisement';
+import { RegisterUser } from '../models/RegisterUser';
+import { UserLogin } from '../models/UserLogin';
 
 
 @Injectable({
@@ -22,21 +24,18 @@ export class BackAPIService {
     this.storage = LocalStorage;
   }
 
-  public GETLoginResponse(matricula: number, password: string){
-    console.log("matricula: " + matricula + " password: " + password);
+  public GETLoginResponse(user:UserLogin){
     this.authStatus.login();
-    this.storage.set(makeStateKey("matricula"), matricula);
+    this.storage.set(makeStateKey("matricula"), user.getID());
     delay(5000);
   }
-  public POSTRegisterUser(user: FormGroup){
-    console.log("matricula: " + user.value.matricula + " password: " + user.value.senha + " curso: " + user.value.curso + " email: " + user.value.email);
-    this.LocalStorage.set(makeStateKey("matricula"), user.value.matricula);
+  public POSTRegisterUser(newUser : RegisterUser){
+    this.LocalStorage.set(makeStateKey("matricula"), newUser.getID());
     this.authStatus.login();
     delay(5000);
   }
 
-  public POSTCreateAd(advertisement: FormGroup){
-    console.log("advertisement: " + advertisement.value.title + " " + advertisement.value.description + " " + advertisement.value.price + " " + advertisement.value.location + " " + advertisement.value.numberOfRooms);
+  public POSTCreateAd(Advertisement: Advertisement){
     delay(5000);
   }
 }

@@ -1,0 +1,37 @@
+<form class="form-inline" [formGroup]="filters">
+  <h3>Search</h3>
+  <div class="formGroup">
+    <label for="campus">Campus</label>
+    <select formControlName="campus" id="campus" class="form-control">
+      <option value="0">All</option>
+      <option value="CAMPUSSSS">Campus 1</option>
+      <option value="2">Campus 2</option>
+      <option value="3">Campus 3</option>
+    </select>
+  </div>
+  <div class="formGroup">
+    <label for="priceRange" class="form-label">Example range</label>
+    <input type="range" class="form-range" min="100" max="3000" id="priceRange" />
+  </div>
+  <div class="formGroup">
+    <label for="numberOfRoomates">Número de colegas de quarto</label>
+    <input
+      class="form-control"
+      min="0"
+      type="number"
+      name="numberOfRoomates"
+      id="numberOfRoomates"
+      formControlName="numberOfRoommates"
+    />
+  </div>
+  <div class="formGroup">
+    <label for="sameGender">Somente mesmo gênero</label>
+    <input
+      class="checkbox"
+      type="checkbox"
+      name="sameGender"
+      id="sameGender"
+      formControlName="sameGender"
+    />
+  </div>
+</form>

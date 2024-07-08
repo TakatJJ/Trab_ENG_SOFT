@@ -1,13 +1,13 @@
 
 
-  <form>
+  <form [formGroup]="userLogin">
     <h4>Login</h4>
 
     <label for="matricula">Matrícula</label>
-    <input type="number" [formControl]="matricula" placeholder="Matrícula" id="matricula" class="form-control"/>
+    <input type="number" formControlName="matricula" placeholder="Matrícula" id="matricula" class="form-control"/>
 
     <label for="senha">Senha</label>
-    <input type="password" [formControl]="senha" placeholder="Senha" id="senha" class="form-control"/>
+    <input type="password" formControlName="senha" placeholder="Senha" id="senha" class="form-control"/>
 
     <button type="button" (click)="onClick()">teste</button>
     

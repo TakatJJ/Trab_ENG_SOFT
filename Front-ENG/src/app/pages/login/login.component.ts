@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, makeStateKey } from '@angular/core';
 import { BackAPIService } from '../../services/back-api.service';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { UserLogin } from '../../models/UserLogin';
 
 
 @Component({
@@ -17,16 +18,17 @@ export class LoginComponent {
     public API: BackAPIService,
   ) 
   {}
-
-  matricula = new FormControl(0,[Validators.required, Validators.minLength(6), Validators.maxLength(8)]);
-  senha = new FormControl("",[Validators.required]);
+  userLogin = new FormGroup({
+  matricula : new FormControl(0,[Validators.required, Validators.minLength(6), Validators.maxLength(8)]),
+  senha : new FormControl("",[Validators.required])
+});
 
   onSubmit() {
-    this.API.GETLoginResponse(this.matricula.value!, this.senha.value!);
+    const userAttempt = new UserLogin(this.userLogin);
+    this.API.GETLoginResponse(userAttempt);
   }
 
   onClick() {
     this.API.authStatus.login();
-    // console.log(this.API.storage.get("matricula"));
   }
 }

@@ -1,0 +1,20 @@
+
+.blurred-GRID
+{
+    display: flex;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    filter: blur(1px);
+}
+
+/* Style the form - display items horizontally */
+.form-inline {
+    display: inline-table;
+    flex-flow: row wrap;
+    align-items: center;
+    top: 30%;
+    width: 80%;
+  }
+  
+ 
