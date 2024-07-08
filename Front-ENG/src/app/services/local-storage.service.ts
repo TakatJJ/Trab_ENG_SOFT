@@ -1,4 +1,4 @@
-import { Injectable, StateKey, TransferState } from '@angular/core';
+import { Injectable, StateKey, TransferState, makeStateKey } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,23 +8,24 @@ export class LocalStorageService {
   constructor() 
   {
     this.storage = new TransferState();
+    console.log("LocalStorageService initialized")
   }
 
-  set (key:StateKey<string>, value:any) : boolean
+  set (key:string, value:any) : boolean
   {
     if (this.storage)
     {
-      this.storage.set(key, JSON.stringify(value));
+      this.storage.set(makeStateKey<string>(key), JSON.stringify(value));
       return true;
     }
     return false;
   }
   
-  get (key:StateKey<string>) : any
+  get (key:string) : any
   {
     if (this.storage)
     {
-      let value = this.storage.get(key, null);
+      let value = this.storage.get(makeStateKey(key), null);
       if (value)
       {
         return JSON.parse(value);
@@ -33,11 +34,11 @@ export class LocalStorageService {
     return null;
   }
 
-  remove (key:StateKey<string>) : boolean
+  remove (key:string) : boolean
   {
     if (this.storage)
     {
-      this.storage.remove(key);
+      this.storage.remove(makeStateKey(key));
       return true;
     }
     return false;

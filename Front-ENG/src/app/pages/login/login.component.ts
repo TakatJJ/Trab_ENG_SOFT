@@ -27,5 +27,6 @@ export class LoginComponent {
 
   onClick() {
     this.API.authStatus.login();
+    // console.log(this.API.storage.get("matricula"));
   }
 }

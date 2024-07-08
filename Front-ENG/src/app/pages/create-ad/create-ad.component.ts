@@ -24,8 +24,8 @@ export class CreateADComponent {
     price : new FormControl(0,[Validators.required, Validators.min(1)]),
     location : new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(50)]),
     numberOfRooms : new FormControl(1,[Validators.required, Validators.min(1)]),
+    fotos: new FormControl('', [Validators.required])
   })
-  // optionsCurso = this.API.getCourses();
   onSubmit() {
     this.API.POSTCreateAd(this.Advertisement);
   }
