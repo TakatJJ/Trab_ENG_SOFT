@@ -1,4 +1,4 @@
-<form  [formGroup]="user">
+<form [formGroup]="user">
   <h4>Cadastro</h4>
   <div class="form-group">
     <label for="matricula">Matrícula</label>
@@ -13,12 +13,18 @@
   <div class="form-group">
     <label for="curso"> Curso</label>
     <select
-    class="form-control" 
-    placeholder="Curso" 
-    id="curso" 
-    formControlName="curso"
+      class="form-control"
+      placeholder="Curso"
+      id="curso"
+      formControlName="curso"
     >
-    <option *ngFor="let curso of cursos" [value]="curso.name" style="background-color: red;">{{curso.name}}</option>
+      <option
+        *ngFor="let curso of cursos"
+        [value]="curso.name"
+        style="background-color: rgba(167, 34, 34, 0.582)"
+      >
+        {{ curso.name }}
+      </option>
     </select>
   </div>
   <div class="form-group">
@@ -33,13 +39,19 @@
   </div>
   <div class="form-group">
     <label for="genero">Gênero</label>
-    <select 
-    class="form-control" 
-    placeholder="Gênero" 
-    id="genero" 
-    formControlName="genero"
+    <select
+      class="form-control"
+      placeholder="Gênero"
+      id="genero"
+      formControlName="genero"
     >
-      <option *ngFor="let genero of generos" [value]="genero" style="background-color: red;">{{genero}}</option>
+      <option
+        *ngFor="let genero of generos"
+        [value]="genero"
+        style="background-color: rgba(167, 34, 34, 0.582)"
+      >
+        {{ genero }}
+      </option>
     </select>
   </div>
   <div class="form-group">
