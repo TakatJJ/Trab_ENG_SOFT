@@ -1,4 +1,4 @@
-<form  [formGroup]="user">
+<form [formGroup]="user">
   <h4>Cadastro</h4>
   <div class="form-group">
     <label for="matricula">Matrícula</label>
@@ -8,18 +8,38 @@
       placeholder="Matrícula"
       id="matricula"
       formControlName="matricula"
+      minlength="6"
+      maxlength="8"
     />
   </div>
+  <span
+    class="NGalert"
+    *ngIf="get('matricula').invalid && get('matricula').touched"
+  >
+    Número de caractéres inválido (min 6/ máx 8)</span
+  >
   <div class="form-group">
     <label for="curso"> Curso</label>
     <select
-    class="form-control" 
-    placeholder="Curso" 
-    id="curso" 
-    formControlName="curso"
+      class="form-control"
+      placeholder="Curso"
+      id="curso"
+      formControlName="curso"
     >
-    <option *ngFor="let curso of cursos" [value]="curso.name" style="background-color: red;">{{curso.name}}</option>
+      <option
+        *ngFor="let curso of cursos"
+        [value]="curso.name"
+        style="background-color: rgba(167, 34, 34, 0.582)"
+      >
+        {{ curso.name }}
+      </option>
     </select>
+    <span
+      class="NGalert"
+      *ngIf="get('curso').hasError('required') && get('curso').touched"
+    >
+      Selecione um curso.
+    </span>
   </div>
   <div class="form-group">
     <label for="email">Email Institucional</label>
@@ -31,16 +51,32 @@
       formControlName="email"
     />
   </div>
+  <span class="NGalert" *ngIf="get('email').hasError('isUfrgsEmail')">
+    Não segue o molde do email URGS.</span
+  >
+
   <div class="form-group">
     <label for="genero">Gênero</label>
-    <select 
-    class="form-control" 
-    placeholder="Gênero" 
-    id="genero" 
-    formControlName="genero"
+    <select
+      class="form-control"
+      placeholder="Gênero"
+      id="genero"
+      formControlName="genero"
     >
-      <option *ngFor="let genero of generos" [value]="genero" style="background-color: red;">{{genero}}</option>
+      <option
+        *ngFor="let genero of generos"
+        [value]="genero"
+        style="background-color: rgba(167, 34, 34, 0.582)"
+      >
+        {{ genero }}
+      </option>
     </select>
+    <span
+      class="NGalert"
+      *ngIf="get('genero').invalid && get('genero').touched"
+    >
+      Selecione um gênero.</span
+    >
   </div>
   <div class="form-group">
     <label for="senha">Senha</label>
@@ -52,6 +88,9 @@
       formControlName="senha"
     />
   </div>
+  <span class="NGalert" *ngIf="get('senha').invalid && get('senha').touched">
+    Número de caractéres abaixo de 6</span
+  >
   <div class="form-group">
     <button type="submit" class="btn btn-outline-danger">Cadastrar</button>
   </div>

@@ -1,68 +1,84 @@
-
 <form [formGroup]="Advertisement">
-    <h5>Criar Anúncio.</h5>
-    <div class="form-group">
-      <label for="foto">Fotos da Residência</label>
-      <input
-        type="file"
-        class="form-control"
-        id="foot"
-        (change)="onChange($event)"
-        placeholder="Fotos do Anúncio"
-        accept="image/*"
-        multiple
-      />
-    </div>
-    <div class="form-group">
-      <label for="title">Título</label>
-      <input
-        type="text"
-        class="form-control"
-        id="title"
-        formControlName="title"
-        placeholder="Título do Anúncio"
-      />
-    </div>
-    <div class="form-group">
-      <label for="description">Descrição</label>
-      <textarea
-        class="form-control"
-        id="description"
-        formControlName="description"
-        placeholder="Descrição"
-      ></textarea>
-    </div>
-    <div class="form-group">
-      <label for="location">Localização</label>
-      <input
-        type="text"
-        class="form-control"
-        name="location"
-        id="location"
-        formControlName="location"
-        placeholder="Localização"
-      />
-    </div>
-    <div class="form-group">
-      <label for="numberOfRooms">Número de quartos disponíveis</label>
-      <input
-        type="number"
-        class="form-control"
-        formControlName="numberOfRooms"
-        placeholder="Número de quartos"
-      />
-    </div>
-    <div>
-      <label for="price">Preço</label>
-      <input
-        type="number"
-        class="form-control"
-        id="price"
-        formControlName="price"
-        placeholder="Preço do aluguel"
-      />
-    </div>
-    <button type="button" class="btn btn-outline-danger" (click)="onSubmit()">
-      Criar anúncio
-    </button>
+  <h5>Criar Anúncio.</h5>
+  <div class="form-group">
+    <label for="foto">Fotos da Residência</label>
+    <input
+      type="file"
+      class="form-control"
+      id="foot"
+      (change)="onChange($event)"
+      placeholder="Fotos do Anúncio"
+      accept="image/*"
+      multiple
+    />
+  </div>
+  <div class="form-group">
+    <label for="title">Título</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      formControlName="title"
+      placeholder="Título do Anúncio"
+    />
+  </div>
+  <span class="NGalert" *ngIf="get('title').invalid && get('title').touched">
+    Título inválido (mínimo 6, máximo 50 caractéres).
+  </span>
+  <div class="form-group">
+    <label for="description">Descrição</label>
+    <textarea
+      class="form-control"
+      id="description"
+      formControlName="description"
+      placeholder="Descrição"
+    ></textarea>
+  </div>
+  <span
+    class="NGalert"
+    *ngIf="get('description').invalid && get('description').touched"
+  >
+    Description inválido (mínimo 6, máximo 200 caractéres).
+  </span>
+  <div class="form-group">
+    <label for="location">Localização</label>
+    <input
+      type="text"
+      class="form-control"
+      name="location"
+      id="location"
+      formControlName="location"
+      placeholder="Localização"
+    />
+  </div>
+  <span
+    class="NGalert"
+    *ngIf="get('location').invalid && get('location').touched"
+  >
+    Localização inválida (mínimo 6, máximo 50 caractéres).
+  </span>
+  <div class="form-group">
+    <label for="numberOfRooms">Número de quartos disponíveis</label>
+    <input
+      type="number"
+      class="form-control"
+      formControlName="numberOfRooms"
+      placeholder="Número de quartos"
+      min="1"
+    />
+  </div>
+  <div>
+    <label for="price">Preço</label>
+    <input
+      type="number"
+      class="form-control"
+      id="price"
+      formControlName="price"
+      placeholder="Preço do aluguel"
+      min="1"
+    />
+  </div>
+  <button type="button" class="btn btn-outline-danger" (click)="onSubmit()">
+    Criar anúncio
+  </button>
 </form>
