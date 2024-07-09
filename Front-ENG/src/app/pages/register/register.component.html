@@ -3,13 +3,13 @@
   <div class="form-group">
     <label for="matricula">Matrícula</label>
     <input
-      type="number"
+      type="text"
       class="form-control"
       placeholder="Matrícula"
       id="matricula"
       formControlName="matricula"
       minlength="6"
-      maxlength="8"
+      maxlength="6"
     />
   </div>
   <span
@@ -92,6 +92,8 @@
     Número de caractéres abaixo de 6</span
   >
   <div class="form-group">
-    <button type="submit" class="btn btn-outline-danger">Cadastrar</button>
+    <button type="submit" class="btn btn-outline-danger" (click)="onSubmit()">
+      Cadastrar
+    </button>
   </div>
 </form>

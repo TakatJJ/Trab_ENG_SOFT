@@ -20,15 +20,16 @@ import { UserLogin } from '../../models/UserLogin';
 export class LoginComponent {
   constructor(public API: BackAPIService) {}
   userLogin = new FormGroup({
-    matricula: new FormControl(0, [
+    matricula: new FormControl('', [
       Validators.required,
       Validators.minLength(6),
-      Validators.maxLength(8),
+      Validators.maxLength(6),
     ]),
     senha: new FormControl('', [Validators.required]),
   });
 
   onSubmit() {
+    console.log(this.userLogin.valid);
     if (this.userLogin.valid) {
       this.loginUser();
     }

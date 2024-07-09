@@ -18,11 +18,10 @@ import { Advertisement } from '../../models/Advertisement';
 })
 export class CreateADComponent {
   private API: BackAPIService;
+  private fotos = new FormData();
   constructor(APIService: BackAPIService) {
     this.API = APIService;
   }
-
-  fotos: Array<File> = [];
 
   Advertisement = new FormGroup({
     title: new FormControl('', [
@@ -44,19 +43,13 @@ export class CreateADComponent {
     numberOfRooms: new FormControl(1, [Validators.required, Validators.min(1)]),
   });
   onSubmit() {
-    console.log(this.Advertisement.value);
     if (this.Advertisement.valid) {
       this.createAd();
     }
   }
 
   createAd() {
-    const newAD = new Advertisement(
-      this.Advertisement,
-      this.API.storage.get('matricula'),
-      this.fotos
-    );
-    this.API.POSTCreateAd(newAD);
+    this.API.POSTCreateAd(this.Advertisement, this.fotos);
   }
 
   get(param: string): any {
@@ -65,10 +58,10 @@ export class CreateADComponent {
 
   onChange(event: any) {
     if (event.target.files.length > 0) {
-      this.fotos = [];
       const fileArray: FileList = event.target.files;
+
       for (let i = 0; i < fileArray.length; i++) {
-        this.fotos.push(fileArray[i]);
+        this.fotos.append('fotos', fileArray[i]);
       }
     }
   }

@@ -1,17 +1,30 @@
+<form [formGroup]="userLogin">
+  <h4>Login</h4>
 
+  <label for="matricula">Matrícula</label>
+  <input
+    type="text"
+    formControlName="matricula"
+    placeholder="Matrícula"
+    id="matricula"
+    class="form-control"
+    min="6"
+    max="6"
+  />
 
-  <form [formGroup]="userLogin">
-    <h4>Login</h4>
+  <label for="senha">Senha</label>
+  <input
+    type="password"
+    formControlName="senha"
+    placeholder="Senha"
+    id="senha"
+    class="form-control"
+  />
 
-    <label for="matricula">Matrícula</label>
-    <input type="number" formControlName="matricula" placeholder="Matrícula" id="matricula" class="form-control"/>
+  <button type="button" (click)="onClick()">teste</button>
 
-    <label for="senha">Senha</label>
-    <input type="password" formControlName="senha" placeholder="Senha" id="senha" class="form-control"/>
-
-    <button type="button" (click)="onClick()">teste</button>
-    
-    <button type="button" class="btn btn-outline-danger" (click)="onSubmit()">Log In</button>
-    <a routerLink="/register"> Não sou cadastrado.</a>
-  </form>
-
+  <button type="button" class="btn btn-outline-danger" (click)="onSubmit()">
+    Log In
+  </button>
+  <a routerLink="/register"> Não sou cadastrado.</a>
+</form>

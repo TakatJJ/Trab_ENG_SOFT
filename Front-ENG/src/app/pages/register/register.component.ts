@@ -26,8 +26,8 @@ export class RegisterComponent {
   user = new FormGroup({
     matricula: new FormControl('', [
       Validators.required,
+      Validators.maxLength(6),
       Validators.minLength(6),
-      Validators.maxLength(8),
     ]),
     senha: new FormControl('', Validators.required),
     curso: new FormControl('', Validators.required),
@@ -42,6 +42,7 @@ export class RegisterComponent {
   generos = Generos;
 
   onSubmit() {
+    console.log(this.user.valid);
     if (this.user.valid) {
       this.registerUser();
     }

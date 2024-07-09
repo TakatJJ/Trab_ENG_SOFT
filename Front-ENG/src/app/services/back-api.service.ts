@@ -11,7 +11,7 @@ import { Advertisement } from '../models/Advertisement';
 import { RegisterUser } from '../models/RegisterUser';
 import { UserLogin } from '../models/UserLogin';
 import { RoomOptions } from '../models/RoomOptions';
-import fs from 'fs';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -30,35 +30,53 @@ export class BackAPIService {
   }
 
   public GETLoginResponse(user: UserLogin) {
-    this.authStatus.login();
-    this.storage.set(makeStateKey('matricula'), user.getID());
-    delay(5000);
+    this.http.get('TuaURLAQui').subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
   public POSTRegisterUser(newUser: RegisterUser) {
-    this.LocalStorage.set(makeStateKey('matricula'), newUser.getID());
-    this.authStatus.login();
-    delay(5000);
-  }
-
-  public POSTCreateAd(Advertisement: Advertisement) {
-    const AdJSON = JSON.stringify(Advertisement);
-    fs.appendFile('../data/mockedRoom.json', AdJSON, (err) => {
-      if (err) {
-        console.log('Error writing file:', err);
-      } else {
-        console.log('Successfully wrote file');
+    this.http.post('TuaURLAQui', newUser).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
       }
-    });
+    );
   }
 
-  public GETSearchRooms(roomOptions: RoomOptions) {
-    const rooms = JSON.parse(
-      'Front-ENG/src/app/data/mockedRooms.json'
-    ) as Advertisement[];
-    this.listOfRooms = new Observable<Advertisement[]>((observer) => {
-      observer.next(rooms);
-      observer.complete();
-    });
-    console.log(roomOptions);
+  public POSTCreateAd(AdvertisementForm: FormGroup, fotos: FormData) {
+    const ad = new Advertisement(
+      AdvertisementForm,
+      this.storage.get('matricula'),
+      Array<File>()
+    );
+    this.http.post('http://localhost:5121/api/Test', ad).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  public async GETSearchRooms(roomOptions: RoomOptions) {
+    this.listOfRooms = await this.http.get<Advertisement[]>(
+      'http://localhost:5121/api/Test'
+    );
+    this.listOfRooms.subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
