@@ -19,6 +19,6 @@ public class Anuncio {
     private String localizacao;
     private Long numeroQuartos;
     @ManyToOne
-    private User locatario;
+    private User user;
 
 }
