@@ -11,7 +11,12 @@
         {{ c }}
       </option>
     </select>
-    <!-- <span *ngIf="c"></span> -->
+    <span
+      class="NGalert"
+      *ngIf="get('campus').hasError('required') && get('campus').touched"
+    >
+      Preencha o campo com alguma escolha.
+    </span>
   </div>
   <div class="formGroup">
     <label for="numberOfRoomates">Número de colegas de quarto</label>
@@ -23,8 +28,8 @@
       id="numberOfRoomates"
       formControlName="numberOfRoommates"
     />
-    <span *ngIf="filters.get('numberOfRoommates')?.invalid"
-      >Campo está inválido.</span
+    <span class="NGalert" *ngIf="get('numberOfRoommates')?.hasError('required')"
+      >Preencha o campo.</span
     >
   </div>
   <div class="together">

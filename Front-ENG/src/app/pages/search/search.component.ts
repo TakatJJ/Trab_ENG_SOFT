@@ -9,6 +9,8 @@ import {
 import { CommonModule } from '@angular/common';
 import { MatSliderModule } from '@angular/material/slider';
 import { Campus } from '../../enums/Campus';
+import { Router } from '@angular/router';
+import { RoomOptions } from '../../models/RoomOptions';
 
 @Component({
   selector: 'app-search',
@@ -19,8 +21,10 @@ import { Campus } from '../../enums/Campus';
 })
 export class SearchComponent {
   private API: BackAPIService;
-  constructor(APIService: BackAPIService) {
+  private router: Router;
+  constructor(APIService: BackAPIService, routerService: Router) {
     this.API = APIService;
+    this.router = routerService;
   }
 
   filters = new FormGroup({
@@ -33,6 +37,12 @@ export class SearchComponent {
 
   campusList = Campus;
   onSearch() {
-    console.log(this.filters.value);
+    if (this.filters.valid) {
+      const roomOptions = new RoomOptions(this.filters.value);
+      this.API.GETRooms(roomOptions);
+    }
+  }
+  get(param: string): any {
+    return this.filters.get(param);
   }
 }

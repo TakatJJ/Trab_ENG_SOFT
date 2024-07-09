@@ -1,23 +1,15 @@
-
-.blurred-GRID
-{
-    display: flex;
-    top: 50%;
-    left: 50%;
-    position: absolute;
-    filter: blur(1px);
+.blurred-GRID {
+  display: flex;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  filter: blur(1px);
 }
 
 /* Style the form - display items horizontally */
 .form-inline {
-    display: inline-block;
-    flex-flow: row wrap;
-    align-items: end;
-    top: calc(50% - 50px);
-    width: 50%;
-  }
-
-
-
-  
- 
+  display: inline-block;
+  flex-flow: row wrap;
+  top: calc(50% - 50px);
+  width: 50%;
+}

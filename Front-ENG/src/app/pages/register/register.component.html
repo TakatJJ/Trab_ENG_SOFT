@@ -8,8 +8,16 @@
       placeholder="Matrícula"
       id="matricula"
       formControlName="matricula"
+      minlength="6"
+      maxlength="8"
     />
   </div>
+  <span
+    class="NGalert"
+    *ngIf="get('matricula').invalid && get('matricula').touched"
+  >
+    Número de caractéres inválido (min 6/ máx 8)</span
+  >
   <div class="form-group">
     <label for="curso"> Curso</label>
     <select
@@ -26,6 +34,12 @@
         {{ curso.name }}
       </option>
     </select>
+    <span
+      class="NGalert"
+      *ngIf="get('curso').hasError('required') && get('curso').touched"
+    >
+      Selecione um curso.
+    </span>
   </div>
   <div class="form-group">
     <label for="email">Email Institucional</label>
@@ -37,6 +51,10 @@
       formControlName="email"
     />
   </div>
+  <span class="NGalert" *ngIf="get('email').hasError('isUfrgsEmail')">
+    Não segue o molde do email URGS.</span
+  >
+
   <div class="form-group">
     <label for="genero">Gênero</label>
     <select
@@ -53,6 +71,12 @@
         {{ genero }}
       </option>
     </select>
+    <span
+      class="NGalert"
+      *ngIf="get('genero').invalid && get('genero').touched"
+    >
+      Selecione um gênero.</span
+    >
   </div>
   <div class="form-group">
     <label for="senha">Senha</label>
@@ -64,6 +88,9 @@
       formControlName="senha"
     />
   </div>
+  <span class="NGalert" *ngIf="get('senha').invalid && get('senha').touched">
+    Número de caractéres abaixo de 6</span
+  >
   <div class="form-group">
     <button type="submit" class="btn btn-outline-danger">Cadastrar</button>
   </div>
