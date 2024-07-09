@@ -10,10 +10,6 @@
     </select>
   </div>
   <div class="formGroup">
-    <label for="priceRange" class="form-label">Example range</label>
-    <input type="range" class="form-range" min="100" max="3000" id="priceRange" />
-  </div>
-  <div class="formGroup">
     <label for="numberOfRoomates">Número de colegas de quarto</label>
     <input
       class="form-control"
@@ -23,8 +19,9 @@
       id="numberOfRoomates"
       formControlName="numberOfRoommates"
     />
+    <span *ngIf="numberOfRoommates.invalid">Campo está inválido.</span>
   </div>
-  <div class="formGroup">
+  <div class="together">
     <label for="sameGender">Somente mesmo gênero</label>
     <input
       class="checkbox"
@@ -33,5 +30,13 @@
       id="sameGender"
       formControlName="sameGender"
     />
+    
+    <label for="priceRange" class="form-label">Faixa de Preço</label>
+
+    <mat-slider style="width: 100%;" discrete min="200" max="2000" [showTickMarks]="true">
+      <input formControlName="minPrice" value="200" matSliderStartThumb />
+      <input formControlName="maxPrice" value="2000" matSliderEndThumb />
+    </mat-slider>
   </div>
+    <button class="btn btn-outline-danger" (click)="onSearch()">Buscar</button>
 </form>
