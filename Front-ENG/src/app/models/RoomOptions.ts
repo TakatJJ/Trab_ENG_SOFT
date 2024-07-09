@@ -1,14 +1,16 @@
+import { FormGroup } from '@angular/forms';
+
 export class RoomOptions {
   campus: string;
   minPrice: number;
   maxPrice: number;
   numberOfRoommates: number;
   sameGender: boolean;
-  constructor(data: any) {
-    this.campus = data.campus;
-    this.minPrice = data.minPrice;
-    this.maxPrice = data.maxPrice;
-    this.numberOfRoommates = data.numberOfRoommates;
-    this.sameGender = data.sameGender;
+  constructor(FormGroup: FormGroup) {
+    this.campus = FormGroup.value.campus;
+    this.minPrice = FormGroup.value.minPrice;
+    this.maxPrice = FormGroup.value.maxPrice;
+    this.numberOfRoommates = FormGroup.value.numberOfRoommates;
+    this.sameGender = FormGroup.value.sameGender;
   }
 }

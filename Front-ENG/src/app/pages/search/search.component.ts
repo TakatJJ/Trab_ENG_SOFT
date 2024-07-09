@@ -38,9 +38,13 @@ export class SearchComponent {
   campusList = Campus;
   onSearch() {
     if (this.filters.valid) {
-      const roomOptions = new RoomOptions(this.filters.value);
-      this.API.GETRooms(roomOptions);
+      this.Search();
     }
+  }
+
+  Search() {
+    const newRoomOptions = new RoomOptions(this.filters);
+    this.API.GETSearchRooms(newRoomOptions);
   }
   get(param: string): any {
     return this.filters.get(param);

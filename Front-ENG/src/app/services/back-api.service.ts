@@ -4,13 +4,14 @@ import {
   HttpResponse,
   provideHttpClient,
 } from '@angular/common/http';
-import { delay, pipe } from 'rxjs';
+import { delay, Observable, pipe } from 'rxjs';
 import { AuthService } from './auth-service.service';
 import { LocalStorageService } from './local-storage.service';
 import { Advertisement } from '../models/Advertisement';
 import { RegisterUser } from '../models/RegisterUser';
 import { UserLogin } from '../models/UserLogin';
 import { RoomOptions } from '../models/RoomOptions';
+import fs from 'fs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ import { RoomOptions } from '../models/RoomOptions';
 export class BackAPIService {
   authStatus: AuthService;
   storage: LocalStorageService;
+  listOfRooms: Observable<Advertisement[]> = new Observable<Advertisement[]>();
   constructor(
     public http: HttpClient,
     private authService: AuthService,
@@ -39,10 +41,24 @@ export class BackAPIService {
   }
 
   public POSTCreateAd(Advertisement: Advertisement) {
-    delay(5000);
+    const AdJSON = JSON.stringify(Advertisement);
+    fs.appendFile('../data/mockedRoom.json', AdJSON, (err) => {
+      if (err) {
+        console.log('Error writing file:', err);
+      } else {
+        console.log('Successfully wrote file');
+      }
+    });
   }
 
-  public GETRooms(roomOptions: RoomOptions) {
+  public GETSearchRooms(roomOptions: RoomOptions) {
+    const rooms = JSON.parse(
+      'Front-ENG/src/app/data/mockedRooms.json'
+    ) as Advertisement[];
+    this.listOfRooms = new Observable<Advertisement[]>((observer) => {
+      observer.next(rooms);
+      observer.complete();
+    });
     console.log(roomOptions);
   }
 }
