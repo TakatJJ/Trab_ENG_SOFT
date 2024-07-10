@@ -3013,9 +3013,9 @@
 											"font": "Arial;13;0",
 											"left": 272,
 											"top": -1552,
-											"width": 80.9072265625,
+											"width": 91.7490234375,
 											"height": 13,
-											"text": "(from Model2)"
+											"text": "(from Anúncios)"
 										},
 										{
 											"_type": "LabelView",
@@ -5515,6 +5515,100 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAGQnsbh0F0n1EY="
 							}
+						},
+						{
+							"_type": "UMLDependencyView",
+							"_id": "AAAAAAGQnsxBNV1gbJc=",
+							"_parent": {
+								"$ref": "AAAAAAGQhaw087QJVZY="
+							},
+							"model": {
+								"$ref": "AAAAAAGQnsxBNV1efts="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGQnsxBNV1hN+Y=",
+									"_parent": {
+										"$ref": "AAAAAAGQnsxBNV1gbJc="
+									},
+									"model": {
+										"$ref": "AAAAAAGQnsxBNV1efts="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 38,
+									"top": 42,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAGQnsxBNV1gbJc="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGQnsxBNV1iBsk=",
+									"_parent": {
+										"$ref": "AAAAAAGQnsxBNV1gbJc="
+									},
+									"model": {
+										"$ref": "AAAAAAGQnsxBNV1efts="
+									},
+									"visible": null,
+									"font": "Arial;13;0",
+									"left": 53,
+									"top": 42,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "AAAAAAGQnsxBNV1gbJc="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "AAAAAAGQnsxBNV1j3cM=",
+									"_parent": {
+										"$ref": "AAAAAAGQnsxBNV1gbJc="
+									},
+									"model": {
+										"$ref": "AAAAAAGQnsxBNV1efts="
+									},
+									"visible": false,
+									"font": "Arial;13;0",
+									"left": 9,
+									"top": 41,
+									"height": 13,
+									"alpha": -1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "AAAAAAGQnsxBNV1gbJc="
+									},
+									"edgePosition": 1
+								}
+							],
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGQhdnUZ7kGzbQ="
+							},
+							"tail": {
+								"$ref": "AAAAAAGQhgpeVb6WgXA="
+							},
+							"lineStyle": 1,
+							"points": "367:119;296:56;24:48;8:800;423:761",
+							"showVisibility": true,
+							"nameLabel": {
+								"$ref": "AAAAAAGQnsxBNV1hN+Y="
+							},
+							"stereotypeLabel": {
+								"$ref": "AAAAAAGQnsxBNV1iBsk="
+							},
+							"propertyLabel": {
+								"$ref": "AAAAAAGQnsxBNV1j3cM="
+							}
 						}
 					]
 				},
@@ -5898,6 +5992,85 @@
 								"$ref": "AAAAAAGQhdnUZ7kEpCQ="
 							},
 							"name": "Anúncios"
+						},
+						{
+							"_type": "UMLPackage",
+							"_id": "AAAAAAGQhgpeVb6UyJY=",
+							"_parent": {
+								"$ref": "AAAAAAGQhdnUZ7kEpCQ="
+							},
+							"name": "Propostas",
+							"ownedElements": [
+								{
+									"_type": "UMLDependency",
+									"_id": "AAAAAAGQhgr/6b6yjzo=",
+									"_parent": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"source": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"target": {
+										"$ref": "AAAAAAGQhgmCgr55yRo="
+									},
+									"stereotype": "use"
+								},
+								{
+									"_type": "UMLDependency",
+									"_id": "AAAAAAGQhgszH77EGqM=",
+									"_parent": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"source": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"target": {
+										"$ref": "AAAAAAGQhfFafbv4nZo="
+									}
+								},
+								{
+									"_type": "UMLPackage",
+									"_id": "AAAAAAGQicMEdRE8awg=",
+									"_parent": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"name": "Criação de propostas"
+								},
+								{
+									"_type": "UMLPackage",
+									"_id": "AAAAAAGQicMj3hFWV+Q=",
+									"_parent": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"name": "Consulta de propostas"
+								},
+								{
+									"_type": "UMLDependency",
+									"_id": "AAAAAAGQnsxBNV1efts=",
+									"_parent": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"source": {
+										"$ref": "AAAAAAGQhgpeVb6UyJY="
+									},
+									"target": {
+										"$ref": "AAAAAAGQhdnUZ7kEpCQ="
+									}
+								}
+							]
+						},
+						{
+							"_type": "UMLDependency",
+							"_id": "AAAAAAGQnsu4nl1ADVY=",
+							"_parent": {
+								"$ref": "AAAAAAGQhdnUZ7kEpCQ="
+							},
+							"source": {
+								"$ref": "AAAAAAGQhdnUZ7kEpCQ="
+							},
+							"target": {
+								"$ref": "AAAAAAGQhgpeVb6UyJY="
+							}
 						}
 					]
 				},
@@ -6290,59 +6463,6 @@
 						"$ref": "AAAAAAGQhaw087QIWGE="
 					},
 					"name": "BD Propostas"
-				},
-				{
-					"_type": "UMLPackage",
-					"_id": "AAAAAAGQhgpeVb6UyJY=",
-					"_parent": {
-						"$ref": "AAAAAAGQhaw087QIWGE="
-					},
-					"name": "Propostas",
-					"ownedElements": [
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGQhgr/6b6yjzo=",
-							"_parent": {
-								"$ref": "AAAAAAGQhgpeVb6UyJY="
-							},
-							"source": {
-								"$ref": "AAAAAAGQhgpeVb6UyJY="
-							},
-							"target": {
-								"$ref": "AAAAAAGQhgmCgr55yRo="
-							},
-							"stereotype": "use"
-						},
-						{
-							"_type": "UMLDependency",
-							"_id": "AAAAAAGQhgszH77EGqM=",
-							"_parent": {
-								"$ref": "AAAAAAGQhgpeVb6UyJY="
-							},
-							"source": {
-								"$ref": "AAAAAAGQhgpeVb6UyJY="
-							},
-							"target": {
-								"$ref": "AAAAAAGQhfFafbv4nZo="
-							}
-						},
-						{
-							"_type": "UMLPackage",
-							"_id": "AAAAAAGQicMEdRE8awg=",
-							"_parent": {
-								"$ref": "AAAAAAGQhgpeVb6UyJY="
-							},
-							"name": "Criação de propostas"
-						},
-						{
-							"_type": "UMLPackage",
-							"_id": "AAAAAAGQicMj3hFWV+Q=",
-							"_parent": {
-								"$ref": "AAAAAAGQhgpeVb6UyJY="
-							},
-							"name": "Consulta de propostas"
-						}
-					]
 				},
 				{
 					"_type": "UMLPackage",
