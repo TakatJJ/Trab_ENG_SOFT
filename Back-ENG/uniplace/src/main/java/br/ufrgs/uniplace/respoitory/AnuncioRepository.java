@@ -7,7 +7,6 @@ import java.util.List;
 
 
 public interface AnuncioRepository extends JpaRepository<Anuncio, Long> {
-//    List<Anuncio> findByPrecoAluguelBetweenAndLocalizacaoAndNumQuartosAndGeneroPreferido(
-//            Double minPreco, Double maxPreco, String localizacao, Integer numQuartos, String generoPreferido);
+    List<Anuncio> findByPrecoBetween(Double minPreco, Double maxPreco);
 }
 

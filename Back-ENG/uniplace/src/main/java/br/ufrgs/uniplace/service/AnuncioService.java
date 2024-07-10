@@ -16,9 +16,13 @@ public class AnuncioService {
         return anuncioRepository.save(anuncio);
     }
 
-//    public List<Anuncio> findAnunciosByFilters(Double minPreco, Double maxPreco, String localizacao, Integer numQuartos, String generoPreferido) {
-//        return anuncioRepository.findByPrecoAluguelBetweenAndLocalizacaoAndNumQuartosAndGeneroPreferido(
-//                minPreco, maxPreco, localizacao, numQuartos, generoPreferido);
-//    }
+    public List<Anuncio> findAllAnuncios() {
+        return anuncioRepository.findAll();
+    }
+
+    public List<Anuncio> findAnunciosByPriceRange(Double minPreco, Double maxPreco) {
+        return anuncioRepository.findByPrecoBetween(minPreco, maxPreco);
+    }
+
 
 }
