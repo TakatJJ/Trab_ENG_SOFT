@@ -1,5 +1,6 @@
 package br.ufrgs.uniplace.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,12 +12,18 @@ import lombok.Setter;
 public class Anuncio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonAlias("matricula")
     private Long id;
-    private Long titulo;
-    private String fotos;
+    @JsonAlias("title")
+    private String titulo;
+    // private String fotos;
+    @JsonAlias("description")
     private String descricao;
+    @JsonAlias("price")
     private Double preco;
+    @JsonAlias("location")
     private String localizacao;
+    @JsonAlias("numberOfRooms")
     private Long numeroQuartos;
     @ManyToOne
     private User user;
