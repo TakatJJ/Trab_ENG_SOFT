@@ -1,6 +1,7 @@
 <p>search-result works!</p>
 <div class="card-result">
   <h3>Resultados</h3>
+  <!-- <button class="btn btn-primary" (click)="goBackToSearch()">Voltar</button> -->
   <div class="card-div" *ngIf="roomList.length != 0; else nothingFound">
     <mat-grid-list cols="4" rowHeight="1:1">
       <mat-grid-tile *ngFor="let r of roomList">

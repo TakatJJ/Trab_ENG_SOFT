@@ -9,6 +9,8 @@ import { UserLogin } from '../models/UserLogin';
 import { RoomOptions } from '../models/RoomOptions';
 import { FormGroup } from '@angular/forms';
 import { MockResponsesService } from './mock-responses.service';
+import { response } from 'express';
+import { userLoginResponse } from '../models/UserLoginResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -32,21 +34,31 @@ export class BackAPIService {
   }
 
   public GETLoginResponse(user: UserLogin) {
-    this.storage.set('matricula', user.getID());
-    this.authService.login();
-    // this.http.get('TuaURLAQui').subscribe(
-    //   (res) => {
-    //     console.log(res);
-    //   },
-    //   (err) => {
-    //     console.log(err);
-    //   }
-    // );
+    this.http.get(`http://localhost:8080/users/${user.getID()}`).subscribe(
+      (res) => {
+        const userLoginResponseOBJ: userLoginResponse =
+          res as userLoginResponse;
+        if (userLoginResponseOBJ != null) {
+          this.storage.set('loggedUser', userLoginResponseOBJ);
+          console.log(userLoginResponseOBJ);
+          this.authStatus.login();
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
   public POSTRegisterUser(newUser: RegisterUser) {
-    this.http.post('TuaURLAQui', newUser).subscribe(
+    this.http.post('http://localhost:8080/users', newUser).subscribe(
       (res) => {
-        console.log(res);
+        const registerUserResponseOBJ: userLoginResponse =
+          res as userLoginResponse;
+        if (registerUserResponseOBJ != null) {
+          this.storage.set('loggedUser', registerUserResponseOBJ);
+          console.log(registerUserResponseOBJ);
+          this.authStatus.login();
+        }
       },
       (err) => {
         console.log(err);
@@ -55,18 +67,16 @@ export class BackAPIService {
   }
 
   public POSTCreateAd(AdvertisementForm: FormGroup, fotos: Array<File>) {
-    // console.log(fotos);
-    // console.log(AdvertisementForm);
     const ad = new Advertisement(
       AdvertisementForm.get('title')!.value,
       AdvertisementForm.get('description')!.value,
       AdvertisementForm.get('price')!.value,
       AdvertisementForm.get('location')!.value,
       AdvertisementForm.get('numberOfRooms')!.value,
-      this.storage.get('matricula')
+      this.storage.get('loggedUser') as RegisterUser
       // fotos
     );
-    this.http.post('http://localhost:5121/api/Test', ad).subscribe(
+    this.http.post('http://localhost:8080/anuncios', ad).subscribe(
       (res) => {
         console.log(res);
       },
