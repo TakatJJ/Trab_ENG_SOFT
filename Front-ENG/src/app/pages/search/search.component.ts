@@ -13,11 +13,17 @@ import { Router } from '@angular/router';
 import { RoomOptions } from '../../models/RoomOptions';
 import { Advertisement } from '../../models/Advertisement';
 import { AdvertisementInterface } from '../../interface/Advertisement';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, MatSliderModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    MatSliderModule,
+    MatButtonModule,
+  ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
