@@ -1,0 +1,22 @@
+<p>search-result works!</p>
+<div class="card-result">
+  <h3>Resultados</h3>
+  <div class="card-div" *ngIf="roomList.length != 0; else nothingFound">
+    <mat-grid-list cols="4" rowHeight="1:1">
+      <mat-grid-tile *ngFor="let r of roomList">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ r.title }}</h5>
+            <p class="card-text">{{ r.description }}</p>
+            <a class="btn btn-primary">Ver detalhes</a>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
+<ng-template #nothingFound>
+  <div>
+    <h3>Nenhum resultado encontrado</h3>
+  </div>
+</ng-template>

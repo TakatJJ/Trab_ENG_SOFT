@@ -13,6 +13,7 @@ import { courses } from '../../enums/courses';
 import { CommonModule } from '@angular/common';
 import { RegisterUser } from '../../models/RegisterUser';
 import { isUfrgsEmail } from '../../customValidators/isUfrgsEmail';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -22,7 +23,7 @@ import { isUfrgsEmail } from '../../customValidators/isUfrgsEmail';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent {
-  constructor(private API: BackAPIService) {}
+  constructor(private API: BackAPIService, private router: Router) {}
   user = new FormGroup({
     matricula: new FormControl('', [
       Validators.required,
@@ -51,6 +52,7 @@ export class RegisterComponent {
   registerUser() {
     const newUser = new RegisterUser(this.user);
     this.API.POSTRegisterUser(newUser);
+    this.router.navigate(['/home']);
   }
 
   get(param: string): any {

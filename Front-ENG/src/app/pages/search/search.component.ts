@@ -11,6 +11,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { Campus } from '../../enums/Campus';
 import { Router } from '@angular/router';
 import { RoomOptions } from '../../models/RoomOptions';
+import { Advertisement } from '../../models/Advertisement';
+import { AdvertisementInterface } from '../../interface/Advertisement';
 
 @Component({
   selector: 'app-search',
@@ -22,6 +24,7 @@ import { RoomOptions } from '../../models/RoomOptions';
 export class SearchComponent {
   private API: BackAPIService;
   private router: Router;
+
   constructor(APIService: BackAPIService, routerService: Router) {
     this.API = APIService;
     this.router = routerService;
@@ -45,6 +48,7 @@ export class SearchComponent {
   Search() {
     const newRoomOptions = new RoomOptions(this.filters);
     this.API.GETSearchRooms(newRoomOptions);
+    this.router.navigate(['/search-result']);
   }
   get(param: string): any {
     return this.filters.get(param);

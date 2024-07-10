@@ -25,4 +25,9 @@ export class AppComponent implements OnInit {
     // { name: 'Contate-nos', path: '/contact' },
     { name: 'Sobre', path: '/about' },
   ];
+
+  onLogout() {
+    this.API.authStatus.logout();
+    this.API.storage.remove('matricula');
+  }
 }

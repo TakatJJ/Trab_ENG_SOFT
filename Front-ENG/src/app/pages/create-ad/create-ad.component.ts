@@ -18,7 +18,7 @@ import { Advertisement } from '../../models/Advertisement';
 })
 export class CreateADComponent {
   private API: BackAPIService;
-  private fotos = new FormData();
+  private fotos = new Array<File>();
   constructor(APIService: BackAPIService) {
     this.API = APIService;
   }
@@ -34,11 +34,11 @@ export class CreateADComponent {
       Validators.minLength(6),
       Validators.maxLength(500),
     ]),
-    price: new FormControl(1, [Validators.required, Validators.min(1)]),
+    price: new FormControl(200, [Validators.required, Validators.min(1)]),
     location: new FormControl('', [
       Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(50),
+      Validators.min(6),
+      Validators.max(2000),
     ]),
     numberOfRooms: new FormControl(1, [Validators.required, Validators.min(1)]),
   });
@@ -49,6 +49,7 @@ export class CreateADComponent {
   }
 
   createAd() {
+    console.log(this.fotos);
     this.API.POSTCreateAd(this.Advertisement, this.fotos);
   }
 
@@ -57,11 +58,12 @@ export class CreateADComponent {
   }
 
   onChange(event: any) {
+    this.fotos = [];
     if (event.target.files.length > 0) {
       const fileArray: FileList = event.target.files;
 
       for (let i = 0; i < fileArray.length; i++) {
-        this.fotos.append('fotos', fileArray[i]);
+        this.fotos.push(fileArray[i]);
       }
     }
   }

@@ -1,68 +1,74 @@
 <nav
-  class="navbar bg-body-tertiary fixed-top px-5"
+  class="navbar fixed-top px-5"
   style="
     border-radius: 25px;
     margin: auto;
     margin-top: 2px;
     height: min-content;
+    background-color: rgb(245, 227, 220);
+    backdrop-filter: blur(20px);
   "
 >
   <div class="container">
-    <a routerLink="/home"
-    routerLinkActive="active"
-     class="navbar-brand">
+    <a routerLink="/home" routerLinkActive="active" class="navbar-brand">
       <img
         src="faviconUFRGS.png"
         width="30"
         height="20"
         alt="UFRS Hotel"
         class="img-fluid logo"
-        style="align-items: end; background-color: black;border-radius: 10px;"
-  
+        style="align-items: end; background-color: black; border-radius: 10px"
       />
       UniPlace
     </a>
 
-    <a 
-    *ngIf="isLoggedIn"
-    class="btn btn-outline-danger"
-    routerLink="/create-ad"
-    routerLinkActive="active"
-    >Criar anúncio</a>
+    <a
+      *ngIf="isLoggedIn"
+      class="btn btn-outline-danger"
+      routerLink="/create-ad"
+      routerLinkActive="active"
+      >Criar anúncio</a
+    >
 
     <a
       *ngIf="isLoggedIn"
       class="btn btn-outline-danger"
       routerLink="/search"
       routerLinkActive="active"
-      >Buscar Apê</a>
+      >Buscar Apê</a
+    >
 
     <a
       *ngIf="!isLoggedIn"
       class="btn btn-outline-danger"
       routerLink="/login"
       routerLinkActive="active"
-      >Login</a>
+      >Login</a
+    >
 
     <a
       *ngIf="isLoggedIn"
       class="btn btn-outline-danger"
       routerLink="/profile"
       routerLinkActive="active"
-      >Profile</a>
-    
+      >Profile</a
+    >
+
     <a
       *ngIf="isLoggedIn"
       class="btn btn-outline-danger"
       routerLink="/logout"
       routerLinkActive="active"
-      >Logout</a>
+      (click)="onLogout()"
+      >Logout</a
+    >
     <a
       *ngIf="!isLoggedIn"
       class="btn btn-outline-danger"
       routerLink="/register"
       routerLinkActive="active"
-      >Register</a>
+      >Register</a
+    >
     <a
       *ngFor="let item of menuItems"
       class="btn btn-outline-danger"
@@ -70,14 +76,9 @@
       routerLinkActive="active"
       >{{ item.name }}</a
     >
-
-    
-    
- 
   </div>
 </nav>
 
 <!-- <div class="center_div"> -->
-  <router-outlet></router-outlet>
+<router-outlet></router-outlet>
 <!-- </div> -->
- 

@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { UserLogin } from '../../models/UserLogin';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ import { UserLogin } from '../../models/UserLogin';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
-  constructor(public API: BackAPIService) {}
+  constructor(public API: BackAPIService, private route: Router) {}
+
   userLogin = new FormGroup({
     matricula: new FormControl('', [
       Validators.required,
@@ -38,6 +40,7 @@ export class LoginComponent {
   loginUser() {
     const user = new UserLogin(this.userLogin);
     this.API.GETLoginResponse(user);
+    this.route.navigate(['/home']);
   }
 
   onClick() {
