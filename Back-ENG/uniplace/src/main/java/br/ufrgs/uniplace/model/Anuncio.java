@@ -12,7 +12,7 @@ public class Anuncio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titulo;
+    private Long titulo;
     private String fotos;
     private String descricao;
     private Double preco;

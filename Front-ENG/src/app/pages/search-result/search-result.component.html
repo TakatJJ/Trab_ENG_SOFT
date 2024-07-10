@@ -1,19 +1,36 @@
 <p>search-result works!</p>
 <div class="card-result">
   <h3>Resultados</h3>
+
   <div class="card-div" *ngIf="roomList.length != 0; else nothingFound">
-    <mat-grid-list cols="4" rowHeight="1:1">
-      <mat-grid-tile *ngFor="let r of roomList">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ r.title }}</h5>
-            <p class="card-text">{{ r.description }}</p>
-            <a class="btn btn-primary">Ver detalhes</a>
-          </div>
-        </div>
-      </mat-grid-tile>
-    </mat-grid-list>
+    <mat-card
+      *ngFor="let room of roomList"
+      class="example-card"
+      appearance="outlined"
+    >
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ room.title }}</mat-card-title>
+        <mat-card-subtitle>{{ room.location }}</mat-card-subtitle>
+      </mat-card-header>
+      <!-- <img
+        mat-card-image
+        src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+        alt="Photo of a Shiba Inu"
+      /> -->
+      <mat-card-content>
+        <p>
+          {{ room.description }}
+        </p>
+        <p><strong>Preço:</strong> R$ {{ room.price }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button>Fazer Proposta!</button>
+        <!-- <button mat-button>Ver Mais!</button> -->
+      </mat-card-actions>
+    </mat-card>
   </div>
+  <button mat-raised-button (click)="goBackToSearch()">Voltar</button>
 </div>
 <ng-template #nothingFound>
   <div>

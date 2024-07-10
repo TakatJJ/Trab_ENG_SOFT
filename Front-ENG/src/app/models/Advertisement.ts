@@ -1,4 +1,5 @@
 import { FormGroup } from '@angular/forms';
+import { RegisterUser } from './RegisterUser';
 
 export class Advertisement {
   title: string;
@@ -6,7 +7,7 @@ export class Advertisement {
   price: number;
   location: string;
   numberOfRooms: number;
-  matricula: number;
+  user: RegisterUser;
   // fotos: Array<File>;
   constructor(
     title: string,
@@ -14,7 +15,7 @@ export class Advertisement {
     price: number,
     location: string,
     numberOfRooms: number,
-    matricula: number
+    user: RegisterUser
     // fotos: Array<File>
   ) {
     this.title = title;
@@ -22,7 +23,7 @@ export class Advertisement {
     this.price = price;
     this.location = location;
     this.numberOfRooms = numberOfRooms;
-    this.matricula = matricula;
+    this.user = user;
     // this.fotos = fotos;
   }
 }

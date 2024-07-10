@@ -10,11 +10,13 @@ import {
 import { RouterModule } from '@angular/router';
 import { UserLogin } from '../../models/UserLogin';
 import { Router } from '@angular/router';
+import { isValidMatricula } from '../../customValidators/isValidMatricula';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, MatButtonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
@@ -26,12 +28,16 @@ export class LoginComponent {
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(6),
+      isValidMatricula(),
     ]),
-    senha: new FormControl('', [Validators.required]),
+    senha: new FormControl('', [Validators.required, Validators.minLength(6)]),
   });
 
+  get(params: string): any {
+    return this.userLogin.get(params);
+  }
+
   onSubmit() {
-    console.log(this.userLogin.valid);
     if (this.userLogin.valid) {
       this.loginUser();
     }

@@ -8,11 +8,12 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Advertisement } from '../../models/Advertisement';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-ad',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule],
   templateUrl: './create-ad.component.html',
   styleUrl: './create-ad.component.css',
 })

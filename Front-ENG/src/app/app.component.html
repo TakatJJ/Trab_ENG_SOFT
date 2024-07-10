@@ -24,7 +24,7 @@
 
     <a
       *ngIf="isLoggedIn"
-      class="btn btn-outline-danger"
+      mat-raised-button
       routerLink="/create-ad"
       routerLinkActive="active"
       >Criar anúncio</a
@@ -32,7 +32,7 @@
 
     <a
       *ngIf="isLoggedIn"
-      class="btn btn-outline-danger"
+      mat-raised-button
       routerLink="/search"
       routerLinkActive="active"
       >Buscar Apê</a
@@ -40,7 +40,7 @@
 
     <a
       *ngIf="!isLoggedIn"
-      class="btn btn-outline-danger"
+      mat-raised-button
       routerLink="/login"
       routerLinkActive="active"
       >Login</a
@@ -48,7 +48,7 @@
 
     <a
       *ngIf="isLoggedIn"
-      class="btn btn-outline-danger"
+      mat-raised-button
       routerLink="/profile"
       routerLinkActive="active"
       >Profile</a
@@ -56,7 +56,7 @@
 
     <a
       *ngIf="isLoggedIn"
-      class="btn btn-outline-danger"
+      mat-raised-button
       routerLink="/logout"
       routerLinkActive="active"
       (click)="onLogout()"
@@ -64,14 +64,14 @@
     >
     <a
       *ngIf="!isLoggedIn"
-      class="btn btn-outline-danger"
+      mat-raised-button
       routerLink="/register"
       routerLinkActive="active"
       >Register</a
     >
     <a
       *ngFor="let item of menuItems"
-      class="btn btn-outline-danger"
+      mat-raised-button
       routerLink="/{{ item.path }}"
       routerLinkActive="active"
       >{{ item.name }}</a

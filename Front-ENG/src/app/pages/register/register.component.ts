@@ -43,7 +43,6 @@ export class RegisterComponent {
   generos = Generos;
 
   onSubmit() {
-    console.log(this.user.valid);
     if (this.user.valid) {
       this.registerUser();
     }

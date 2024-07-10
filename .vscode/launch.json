@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-UniplaceApplication<uniplace>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "br.ufrgs.uniplace.UniplaceApplication",
+      "projectName": "uniplace",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

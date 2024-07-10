@@ -8,9 +8,20 @@
     placeholder="Matrícula"
     id="matricula"
     class="form-control"
-    min="6"
-    max="6"
   />
+  <span
+    class="NGalert"
+    *ngIf="
+      get('matricula').hasError('isValidMatricula') && get('matricula').touched
+    "
+    >Contém dígitos! Inválido!</span
+  >
+  <span
+    class="NGalert"
+    *ngIf="get('matricula').hasError('minlength') && get('matricula').touched"
+  >
+    Matrícula deve ter exatamente 6 caractéres
+  </span>
 
   <label for="senha">Senha</label>
   <input
@@ -20,11 +31,13 @@
     id="senha"
     class="form-control"
   />
+  <span class="NGalert" *ngIf="get('senha').invalid && get('senha').touched"
+    >Senha deve ter mais de 6 caractéres</span
+  >
 
-  <button type="button" (click)="onClick()">teste</button>
+  <!-- <button type="button" (click)="onClick()">teste</button> -->
 
-  <button type="button" class="btn btn-outline-danger" (click)="onSubmit()">
-    Log In
-  </button>
+  <button type="button" mat-flat-button (click)="onSubmit()">Log In</button>
+  <hr />
   <a routerLink="/register"> Não sou cadastrado.</a>
 </form>
