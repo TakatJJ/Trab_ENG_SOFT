@@ -9,6 +9,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
+import { AdvertisementRESPONSE } from '../../models/AdvertisementRESPONSE';
 
 @Component({
   selector: 'app-search-result',
@@ -24,7 +25,7 @@ import { Router } from '@angular/router';
   styleUrl: './search-result.component.css',
 })
 export class SearchResultComponent {
-  public roomList = new Array<Advertisement>();
+  public roomList = new Array<AdvertisementRESPONSE>();
 
   constructor(private API: BackAPIService, private router: Router) {
     this.API.listOfRoomsObserver.subscribe((room) => {

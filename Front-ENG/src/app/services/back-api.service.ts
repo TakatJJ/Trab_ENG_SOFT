@@ -11,6 +11,7 @@ import { FormGroup } from '@angular/forms';
 import { MockResponsesService } from './mock-responses.service';
 import { response } from 'express';
 import { userLoginResponse } from '../models/UserLoginResponse';
+import { AdvertisementRESPONSE } from '../models/AdvertisementRESPONSE';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,9 @@ import { userLoginResponse } from '../models/UserLoginResponse';
 export class BackAPIService {
   authStatus: AuthService;
   storage: LocalStorageService;
-  listOfRooms$: BehaviorSubject<Advertisement[]> = new BehaviorSubject<
-    Advertisement[]
-  >(new Array<Advertisement>());
+  listOfRooms$: BehaviorSubject<AdvertisementRESPONSE[]> = new BehaviorSubject<
+    AdvertisementRESPONSE[]
+  >(new Array<AdvertisementRESPONSE>());
   listOfRoomsObserver = this.listOfRooms$.asObservable();
 
   constructor(
@@ -34,20 +35,22 @@ export class BackAPIService {
   }
 
   public GETLoginResponse(user: UserLogin) {
-    this.http.get(`http://localhost:8080/users/${user.getID()}`).subscribe(
-      (res) => {
-        const userLoginResponseOBJ: userLoginResponse =
-          res as userLoginResponse;
-        if (userLoginResponseOBJ != null) {
-          this.storage.set('loggedUser', userLoginResponseOBJ);
-          console.log(userLoginResponseOBJ);
-          this.authStatus.login();
+    this.http
+      .get(`http://localhost:8080/users/${user.getID()}/${user.getSenha()}`)
+      .subscribe(
+        (res) => {
+          const userLoginResponseOBJ: userLoginResponse =
+            res as userLoginResponse;
+          if (userLoginResponseOBJ != null) {
+            this.storage.set('loggedUser', userLoginResponseOBJ);
+            console.log(userLoginResponseOBJ);
+            this.authStatus.login();
+          }
+        },
+        (err) => {
+          console.log(err);
         }
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+      );
   }
   public POSTRegisterUser(newUser: RegisterUser) {
     this.http.post('http://localhost:8080/users', newUser).subscribe(
@@ -86,23 +89,25 @@ export class BackAPIService {
     );
   }
 
-  public GETSearchRooms(roomOptions: RoomOptions): Array<Advertisement> {
-    // this.http
-    //   .get(
-    //     `TuaURLAqui/?campus=${roomOptions.campus}&maxprice=${roomOptions.maxPrice}
-    // &minprice=${roomOptions.minPrice}&numberofroommates=${roomOptions.numberOfRoommates}&sameGender=${roomOptions.sameGender}`
-    //   )
-    //   .subscribe(
-    //     (res) => {
-    //       console.log(res);
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //     }
-    //   );
-    this.listOfRooms$.next(
-      JSON.parse(this.mockData.getRoomData()) as Array<Advertisement>
-    );
-    return JSON.parse(this.mockData.getRoomData()) as Array<Advertisement>;
+  public GETSearchRooms(roomOptions: RoomOptions) {
+    this.http
+      .get(
+        `http://localhost:8080/anuncios/price?minPreco=${roomOptions.minPrice}&maxPreco=${roomOptions.maxPrice}`
+      )
+      .subscribe(
+        (res) => {
+          this.listOfRooms$.next(res as Array<AdvertisementRESPONSE>);
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    // this.listOfRooms$.next(
+    //   // JSON.parse(this.mockData.getRoomData()) as Array<AdvertisementRESPONSE>
+    // );
+
+    console.log(this.listOfRooms$.value);
+    // return JSON.parse(this.mockData.getRoomData()) as Array<Advertisement>;
   }
 }
