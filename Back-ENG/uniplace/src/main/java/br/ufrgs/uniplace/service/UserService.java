@@ -17,4 +17,8 @@ public class UserService {
     public User saveUser(User user) {
         return userRepository.save(user);
     }
+
+    public User findUserByMatriculaAndSenha(Long matricula, String senha) {
+        return userRepository.findByMatriculaAndSenha(matricula, senha);
+    }
 }
