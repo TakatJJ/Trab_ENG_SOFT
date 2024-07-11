@@ -14,14 +14,8 @@
     *ngIf="
       get('matricula').hasError('isValidMatricula') && get('matricula').touched
     "
-    >Contém dígitos! Inválido!</span
+    >Contém dígitos ou número de caractéres menor que 6! Inválido!</span
   >
-  <span
-    class="NGalert"
-    *ngIf="get('matricula').hasError('minlength') && get('matricula').touched"
-  >
-    Matrícula deve ter exatamente 6 caractéres
-  </span>
 
   <label for="senha">Senha</label>
   <input

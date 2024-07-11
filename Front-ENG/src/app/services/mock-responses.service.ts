@@ -14,13 +14,7 @@ export class MockResponsesService {
         "price": 1000,
         "location": "Rua 1, Bairro 1, Cidade 1",
         "numberOfRooms": 2,
-        "matricula": "123456",
-        "fotos": [
-          "assets/img/room1/1.jpg",
-          "assets/img/room1/2.jpg",
-          "assets/img/room1/3.jpg",
-          "assets/img/room1/4.jpg"
-        ]
+        "matricula": "123456"
       },
       {
         "title": "Apartamento 2",
@@ -28,13 +22,7 @@ export class MockResponsesService {
         "price": 1500,
         "location": "Rua 2, Bairro 2, Cidade 2",
         "numberOfRooms": 3,
-        "matricula": "654321",
-        "fotos": [
-          "assets/img/room2/1.jpg",
-          "assets/img/room2/2.jpg",
-          "assets/img/room2/3.jpg",
-          "assets/img/room2/4.jpg"
-        ]
+        "matricula": "654321"
       },
       {
         "title": "Apartamento 3",
@@ -42,13 +30,7 @@ export class MockResponsesService {
         "price": 2000,
         "location": "Rua 3, Bairro 3, Cidade 3",
         "numberOfRooms": 4,
-        "matricula": "987654",
-        "fotos": [
-          "assets/img/room3/1.jpg",
-          "assets/img/room3/2.jpg",
-          "assets/img/room3/3.jpg",
-          "assets/img/room3/4.jpg"
-        ]
+        "matricula": "987654"
       },
       {
         "title": "Apartamento 4",
@@ -56,13 +38,7 @@ export class MockResponsesService {
         "price": 200,
         "location": "Rua 4, Bairro 4, Cidade 4",
         "numberOfRooms": 5,
-        "matricula": "456789",
-        "fotos": [
-          "assets/img/room4/1.jpg",
-          "assets/img/room4/2.jpg",
-          "assets/img/room4/3.jpg",
-          "assets/img/room4/4.jpg"
-        ]
+        "matricula": "456789"
       },
       {
         "title": "Apartamento 5",
@@ -70,13 +46,7 @@ export class MockResponsesService {
         "price": 1200,
         "location": "Rua 5, Bairro 5, Cidade 5",
         "numberOfRooms": 6,
-        "matricula": "789123",
-        "fotos": [
-          "assets/img/room5/1.jpg",
-          "assets/img/room5/2.jpg",
-          "assets/img/room5/3.jpg",
-          "assets/img/room5/4.jpg"
-        ]
+        "matricula": "789123"
       },
       {
         "title": "Apartamento 6",
@@ -84,13 +54,7 @@ export class MockResponsesService {
         "price": 300,
         "location": "Rua 6, Bairro 6, Cidade 6",
         "numberOfRooms": 7,
-        "matricula": "321789",
-        "fotos": [
-          "assets/img/room6/1.jpg",
-          "assets/img/room6/2.jpg",
-          "assets/img/room6/3.jpg",
-          "assets/img/room6/4.jpg"
-        ]
+        "matricula": "321789"
       },
       {
         "title": "Apartamento 7",
@@ -98,13 +62,7 @@ export class MockResponsesService {
         "price": 400,
         "location": "Rua 7, Bairro 7, Cidade 7",
         "numberOfRooms": 8,
-        "matricula": "987321",
-        "fotos": [
-          "assets/img/room7/1.jpg",
-          "assets/img/room7/2.jpg",
-          "assets/img/room7/3.jpg",
-          "assets/img/room7/4.jpg"
-        ]
+        "matricula": "987321"
       },
       {
         "title": "Apartamento 8",
@@ -112,13 +70,8 @@ export class MockResponsesService {
         "price": 450,
         "location": "Rua 8, Bairro 8, Cidade 8",
         "numberOfRooms": 9,
-        "matricula": "321654",
-        "fotos": [
-          "assets/img/room8/1.jpg",
-          "assets/img/room8/2.jpg",
-          "assets/img/room8/3.jpg",
-          "assets/img/room8/4.jpg"
-        ]
+        "matricula": "321654"
+        
       },
       {
         "title": "Apartamento 9",
@@ -126,13 +79,7 @@ export class MockResponsesService {
         "price": 500,
         "location": "Rua 9, Bairro 9, Cidade 9",
         "numberOfRooms": 10,
-        "matricula": "654987",
-        "fotos": [
-          "assets/img/room9/1.jpg",
-          "assets/img/room9/2.jpg",
-          "assets/img/room9/3.jpg",
-          "assets/img/room9/4.jpg"
-        ]
+        "matricula": "654987"
       }
     ]`;
 

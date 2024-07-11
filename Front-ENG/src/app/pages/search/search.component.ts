@@ -11,8 +11,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { Campus } from '../../enums/Campus';
 import { Router } from '@angular/router';
 import { RoomOptions } from '../../models/RoomOptions';
-import { Advertisement } from '../../models/Advertisement';
-import { AdvertisementInterface } from '../../interface/Advertisement';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

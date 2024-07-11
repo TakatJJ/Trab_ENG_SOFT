@@ -35,11 +35,15 @@ export class CreateADComponent {
       Validators.minLength(6),
       Validators.maxLength(500),
     ]),
-    price: new FormControl(200, [Validators.required, Validators.min(1)]),
+    price: new FormControl(200, [
+      Validators.required,
+      Validators.min(200),
+      Validators.max(2000),
+    ]),
     location: new FormControl('', [
       Validators.required,
-      Validators.min(6),
-      Validators.max(2000),
+      Validators.minLength(6),
+      Validators.maxLength(2000),
     ]),
     numberOfRooms: new FormControl(1, [Validators.required, Validators.min(1)]),
   });

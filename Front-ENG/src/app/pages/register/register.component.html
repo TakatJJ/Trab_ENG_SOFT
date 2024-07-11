@@ -12,11 +12,13 @@
       maxlength="6"
     />
   </div>
+
   <span
     class="NGalert"
-    *ngIf="get('matricula').invalid && get('matricula').touched"
-  >
-    Número de caractéres inválido (min 6/ máx 8)</span
+    *ngIf="
+      get('matricula').hasError('isValidMatricula') && get('matricula').touched
+    "
+    >Contém dígitos ou número de caractéres menor que 6! Inválido!</span
   >
   <div class="form-group">
     <label for="curso"> Curso</label>
@@ -92,7 +94,7 @@
     Número de caractéres abaixo de 6</span
   >
   <div class="form-group">
-    <button type="submit" class="btn btn-outline-danger" (click)="onSubmit()">
+    <button type="submit" mat-flat-button (click)="onSubmit()">
       Cadastrar
     </button>
   </div>

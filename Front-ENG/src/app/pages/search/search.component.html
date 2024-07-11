@@ -31,6 +31,14 @@
     <span class="NGalert" *ngIf="get('numberOfRoommates')?.hasError('required')"
       >Preencha o campo.</span
     >
+    <span
+      class="NGalert"
+      *ngIf="
+        get('numberOfRoommates')?.hasError('min') &&
+        get('numberOfRoommates').touched
+      "
+      >Valor negativo! Inválido!</span
+    >
   </div>
   <div class="together">
     <label for="sameGender">Somente mesmo gênero</label>
