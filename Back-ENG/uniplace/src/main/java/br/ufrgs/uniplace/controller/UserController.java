@@ -18,6 +18,16 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    @GetMapping("/{matricula}/{senha}")
+    public ResponseEntity<User> getUserByMatriculaAndSenha(@PathVariable Long matricula, @PathVariable String senha) {
+        User user = userService.findUserByMatriculaAndSenha(matricula, senha);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.status(404).build();
+        }
+    }
+
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
         User savedUser = userService.saveUser(user);
