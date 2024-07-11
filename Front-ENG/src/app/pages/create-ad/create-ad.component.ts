@@ -7,8 +7,9 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Advertisement } from '../../models/Advertisement';
+
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-ad',
@@ -20,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class CreateADComponent {
   private API: BackAPIService;
   private fotos = new Array<File>();
-  constructor(APIService: BackAPIService) {
+  constructor(APIService: BackAPIService, private router: Router) {
     this.API = APIService;
   }
 
@@ -56,6 +57,7 @@ export class CreateADComponent {
   createAd() {
     console.log(this.fotos);
     this.API.POSTCreateAd(this.Advertisement, this.fotos);
+    this.router.navigate(['/home']);
   }
 
   get(param: string): any {
