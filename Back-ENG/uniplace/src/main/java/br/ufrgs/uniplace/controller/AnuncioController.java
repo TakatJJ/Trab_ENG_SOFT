@@ -29,8 +29,8 @@ public class AnuncioController {
     }
 
     @GetMapping("/price")
-    public ResponseEntity<List<Anuncio>> getAnunciosByPriceRange(@RequestParam Double minPreco, @RequestParam Double maxPreco) {
-        List<Anuncio> anuncios = anuncioService.findAnunciosByPriceRange(minPreco, maxPreco);
+    public ResponseEntity<Anuncio[]> getAnunciosByPriceRange(@RequestParam Double minPreco, @RequestParam Double maxPreco) {
+        Anuncio[] anuncios = anuncioService.findAnunciosByPriceRange(minPreco, maxPreco);
         return ResponseEntity.ok(anuncios);
     }
 

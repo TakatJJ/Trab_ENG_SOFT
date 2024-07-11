@@ -20,8 +20,9 @@ public class AnuncioService {
         return anuncioRepository.findAll();
     }
 
-    public List<Anuncio> findAnunciosByPriceRange(Double minPreco, Double maxPreco) {
-        return anuncioRepository.findByPrecoBetween(minPreco, maxPreco);
+    public Anuncio[] findAnunciosByPriceRange(Double minPreco, Double maxPreco) {
+        List<Anuncio> anunciosList = anuncioRepository.findByPrecoBetween(minPreco, maxPreco);
+        return anunciosList.toArray(new Anuncio[0]);
     }
 
 
