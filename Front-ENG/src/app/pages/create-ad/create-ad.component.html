@@ -66,6 +66,11 @@
       placeholder="Número de quartos"
       min="1"
     />
+    <span
+      class="NGalert"
+      *ngIf="get('numberOfRooms').invalid && get('numberOfRooms').touched"
+      >Deve ter no mínimo 1 quarto vago</span
+    >
   </div>
   <div>
     <label for="price">Preço</label>
@@ -78,6 +83,9 @@
       min="200"
       max="2000"
     />
+    <span class="NGalert" *ngIf="get('price').invalid && get('price').touched"
+      >Preço deve estar entre 200 e 2000</span
+    >
   </div>
   <button type="button" mat-flat-button (click)="onSubmit()">
     Criar anúncio

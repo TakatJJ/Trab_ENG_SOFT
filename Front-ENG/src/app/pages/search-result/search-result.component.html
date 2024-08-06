@@ -10,8 +10,8 @@
     >
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ room.title }}</mat-card-title>
-        <mat-card-subtitle>{{ room.location }}</mat-card-subtitle>
+        <mat-card-title>{{ room.titulo }}</mat-card-title>
+        <mat-card-subtitle>{{ room.localizacao }}</mat-card-subtitle>
       </mat-card-header>
       <!-- <img
         mat-card-image
@@ -20,9 +20,9 @@
       /> -->
       <mat-card-content>
         <p>
-          {{ room.description }}
+          {{ room.descricao }}
         </p>
-        <p><strong>Preço:</strong> R$ {{ room.price }}</p>
+        <p><strong>Preço:</strong> R$ {{ room.preco }}</p>
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button>Fazer Proposta!</button>
@@ -32,6 +32,7 @@
   </div>
   <button mat-raised-button (click)="goBackToSearch()">Voltar</button>
 </div>
+
 <ng-template #nothingFound>
   <div>
     <h3>Nenhum resultado encontrado</h3>

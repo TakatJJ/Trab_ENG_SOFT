@@ -7,8 +7,9 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { Advertisement } from '../../models/Advertisement';
+
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-ad',
@@ -20,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class CreateADComponent {
   private API: BackAPIService;
   private fotos = new Array<File>();
-  constructor(APIService: BackAPIService) {
+  constructor(APIService: BackAPIService, private router: Router) {
     this.API = APIService;
   }
 
@@ -35,11 +36,15 @@ export class CreateADComponent {
       Validators.minLength(6),
       Validators.maxLength(500),
     ]),
-    price: new FormControl(200, [Validators.required, Validators.min(1)]),
+    price: new FormControl(200, [
+      Validators.required,
+      Validators.min(200),
+      Validators.max(2000),
+    ]),
     location: new FormControl('', [
       Validators.required,
-      Validators.min(6),
-      Validators.max(2000),
+      Validators.minLength(6),
+      Validators.maxLength(2000),
     ]),
     numberOfRooms: new FormControl(1, [Validators.required, Validators.min(1)]),
   });
@@ -52,6 +57,7 @@ export class CreateADComponent {
   createAd() {
     console.log(this.fotos);
     this.API.POSTCreateAd(this.Advertisement, this.fotos);
+    this.router.navigate(['/home']);
   }
 
   get(param: string): any {

@@ -14,11 +14,18 @@ import { CommonModule } from '@angular/common';
 import { RegisterUser } from '../../models/RegisterUser';
 import { isUfrgsEmail } from '../../customValidators/isUfrgsEmail';
 import { Router } from '@angular/router';
+import { isValidMatricula } from '../../customValidators/isValidMatricula';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    CommonModule,
+    MatButtonModule,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -29,6 +36,7 @@ export class RegisterComponent {
       Validators.required,
       Validators.maxLength(6),
       Validators.minLength(6),
+      isValidMatricula(),
     ]),
     senha: new FormControl('', Validators.required),
     curso: new FormControl('', Validators.required),
