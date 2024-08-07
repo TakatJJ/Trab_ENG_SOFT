@@ -1,27 +1,30 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import LoginState from '../models/LoginState';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  state$: BehaviorSubject<boolean>;
-  currentState: Observable<boolean>;
-  constructor() 
-  {
-    this.state$ = new BehaviorSubject(false);
-    console.log("CRIEI")
+  state$: BehaviorSubject<LoginState>;
+  currentState: Observable<LoginState>;
+  constructor() {
+    this.state$ = new BehaviorSubject({
+      isLoggedIn: false,
+      typeOfUser: '',
+    } as LoginState);
+    console.log('CRIEI');
     this.currentState = this.state$.asObservable();
   }
   isLoggedIn() {
     return this.state$.getValue();
   }
 
-  login() {
-    this.state$.next(true);
+  login(UserType: string) {
+    this.state$.next({ isLoggedIn: true, typeOfUser: UserType });
   }
 
   logout() {
-    this.state$.next(false);
+    this.state$.next({ isLoggedIn: false, typeOfUser: '' });
   }
 }

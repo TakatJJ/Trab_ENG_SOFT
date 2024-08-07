@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, makeStateKey } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { LocalStorageService } from './services/local-storage.service';
 import { AuthService } from './services/auth-service.service';
 import { BackAPIService } from './services/back-api.service';
@@ -15,10 +15,14 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
-  constructor(private API: BackAPIService) {}
+  userType = '';
+  constructor(private API: BackAPIService, private router: Router) {}
   ngOnInit(): void {
     this.API.authStatus.currentState.subscribe((state) => {
-      this.isLoggedIn = state;
+      this.isLoggedIn = state.isLoggedIn;
+    });
+    this.API.authStatus.currentState.subscribe((state) => {
+      this.userType = state.typeOfUser;
     });
   }
 
@@ -30,5 +34,6 @@ export class AppComponent implements OnInit {
   onLogout() {
     this.API.authStatus.logout();
     this.API.storage.remove('matricula');
+    this.router.navigate(['/home']);
   }
 }

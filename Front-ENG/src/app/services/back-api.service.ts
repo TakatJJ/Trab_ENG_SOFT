@@ -44,7 +44,7 @@ export class BackAPIService {
           if (userLoginResponseOBJ != null) {
             this.storage.set('loggedUser', userLoginResponseOBJ);
             console.log(userLoginResponseOBJ);
-            this.authStatus.login();
+            this.authStatus.login(userLoginResponseOBJ.tipoDeUser);
           }
         },
         (err) => {
@@ -60,7 +60,7 @@ export class BackAPIService {
         if (registerUserResponseOBJ != null) {
           this.storage.set('loggedUser', registerUserResponseOBJ);
           // console.log(registerUserResponseOBJ);
-          this.authStatus.login();
+          this.authStatus.login(registerUserResponseOBJ.tipoDeUser);
         }
       },
       (err) => {

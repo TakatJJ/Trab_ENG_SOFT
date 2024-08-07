@@ -50,6 +50,6 @@ export class LoginComponent {
   }
 
   onClick() {
-    this.API.authStatus.login();
+    this.API.authStatus.login('Locatário');
   }
 }

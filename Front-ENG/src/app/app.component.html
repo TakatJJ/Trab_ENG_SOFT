@@ -23,7 +23,7 @@
     </a>
 
     <a
-      *ngIf="isLoggedIn"
+      *ngIf="isLoggedIn && userType == 'Locador'"
       mat-raised-button
       routerLink="/create-ad"
       routerLinkActive="active"
@@ -31,7 +31,7 @@
     >
 
     <a
-      *ngIf="isLoggedIn"
+      *ngIf="isLoggedIn && userType == 'Locatário'"
       mat-raised-button
       routerLink="/search"
       routerLinkActive="active"
