@@ -16,6 +16,7 @@ import { isUfrgsEmail } from '../../customValidators/isUfrgsEmail';
 import { Router } from '@angular/router';
 import { isValidMatricula } from '../../customValidators/isValidMatricula';
 import { MatButtonModule } from '@angular/material/button';
+import { UserTypes } from '../../enums/UserTypes';
 
 @Component({
   selector: 'app-register',
@@ -46,9 +47,11 @@ export class RegisterComponent {
       isUfrgsEmail(),
     ]),
     genero: new FormControl('', Validators.required),
+    tipoDeUser: new FormControl('', Validators.required),
   });
   cursos = courses;
   generos = Generos;
+  tiposDeUsers = UserTypes;
 
   onSubmit() {
     if (this.user.valid) {

@@ -9,7 +9,7 @@ import { UserLogin } from '../models/UserLogin';
 import { RoomOptions } from '../models/RoomOptions';
 import { FormGroup } from '@angular/forms';
 import { MockResponsesService } from './mock-responses.service';
-import { response } from 'express';
+
 import { userLoginResponse } from '../models/UserLoginResponse';
 import { AdvertisementRESPONSE } from '../models/AdvertisementRESPONSE';
 
@@ -59,7 +59,7 @@ export class BackAPIService {
           res as userLoginResponse;
         if (registerUserResponseOBJ != null) {
           this.storage.set('loggedUser', registerUserResponseOBJ);
-          console.log(registerUserResponseOBJ);
+          // console.log(registerUserResponseOBJ);
           this.authStatus.login();
         }
       },
@@ -69,13 +69,14 @@ export class BackAPIService {
     );
   }
 
-  public POSTCreateAd(AdvertisementForm: FormGroup, fotos: Array<File>) {
+  public POSTCreateAd(AdvertisementForm: FormGroup, fotos: File) {
     const ad = new Advertisement(
       AdvertisementForm.get('title')!.value,
       AdvertisementForm.get('description')!.value,
       AdvertisementForm.get('price')!.value,
       AdvertisementForm.get('location')!.value,
       AdvertisementForm.get('numberOfRooms')!.value,
+      AdvertisementForm.get('nearestCampus')!.value,
       this.storage.get('loggedUser') as RegisterUser
       // fotos
     );
