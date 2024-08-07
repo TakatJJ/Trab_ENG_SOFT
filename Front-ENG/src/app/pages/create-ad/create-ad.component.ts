@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BackAPIService } from '../../services/back-api.service';
 import {
   FormGroup,
@@ -10,6 +10,7 @@ import {
 
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
+import { Campus } from '../../enums/Campus';
 
 @Component({
   selector: 'app-create-ad',
@@ -20,7 +21,8 @@ import { Router } from '@angular/router';
 })
 export class CreateADComponent {
   private API: BackAPIService;
-  private fotos = new Array<File>();
+  private foto: File = new File([], '');
+
   constructor(APIService: BackAPIService, private router: Router) {
     this.API = APIService;
   }
@@ -47,16 +49,25 @@ export class CreateADComponent {
       Validators.maxLength(2000),
     ]),
     numberOfRooms: new FormControl(1, [Validators.required, Validators.min(1)]),
+    nearestCampus: new FormControl('', [Validators.required]),
   });
+  allCampus = Campus.filter((campus) => campus != 'Todos');
   onSubmit() {
-    if (this.Advertisement.valid) {
+    if (this.Advertisement.valid && this.foto.size > 0) {
       this.createAd();
     }
   }
 
+  uploadPhoto(foto: File) {
+    // const fileRef = ref(this.FireStorage, foto.name);
+    // uploadBytes(fileRef, foto).then((snapshot) => {
+    //   console.log('Uploaded a blob or file!');
+    // });
+  }
+
   createAd() {
-    console.log(this.fotos);
-    this.API.POSTCreateAd(this.Advertisement, this.fotos);
+    console.log(this.foto);
+    this.API.POSTCreateAd(this.Advertisement, this.foto);
     this.router.navigate(['/home']);
   }
 
@@ -65,13 +76,9 @@ export class CreateADComponent {
   }
 
   onChange(event: any) {
-    this.fotos = [];
     if (event.target.files.length > 0) {
-      const fileArray: FileList = event.target.files;
-
-      for (let i = 0; i < fileArray.length; i++) {
-        this.fotos.push(fileArray[i]);
-      }
+      this.foto = event.target.files[0];
+      console.log(this.foto);
     }
   }
 }

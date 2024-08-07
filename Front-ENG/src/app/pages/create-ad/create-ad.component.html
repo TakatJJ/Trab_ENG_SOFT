@@ -57,6 +57,22 @@
   >
     Localização inválida (mínimo 6, máximo 50 caractéres).
   </span>
+  <div>
+    <label for="nearestCampus">Campus mais próximo</label>
+    <select
+      class="form-control"
+      id="nearestCampus"
+      formControlName="nearestCampus"
+    >
+      <option
+        style="background-color: rgba(167, 34, 34, 0.582)"
+        *ngFor="let campus of allCampus"
+        [value]="campus"
+      >
+        {{ campus }}
+      </option>
+    </select>
+  </div>
   <div class="form-group">
     <label for="numberOfRooms">Número de quartos disponíveis</label>
     <input
@@ -87,6 +103,7 @@
       >Preço deve estar entre 200 e 2000</span
     >
   </div>
+
   <button type="button" mat-flat-button (click)="onSubmit()">
     Criar anúncio
   </button>

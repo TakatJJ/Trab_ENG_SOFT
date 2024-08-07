@@ -7,6 +7,7 @@ export class Advertisement {
   price: number;
   location: string;
   numberOfRooms: number;
+  nearestCampus: string;
   user: RegisterUser;
   // fotos: Array<File>;
   constructor(
@@ -15,6 +16,7 @@ export class Advertisement {
     price: number,
     location: string,
     numberOfRooms: number,
+    nearestCampus: string,
     user: RegisterUser
     // fotos: Array<File>
   ) {
@@ -23,6 +25,7 @@ export class Advertisement {
     this.price = price;
     this.location = location;
     this.numberOfRooms = numberOfRooms;
+    this.nearestCampus = nearestCampus;
     this.user = user;
     // this.fotos = fotos;
   }
