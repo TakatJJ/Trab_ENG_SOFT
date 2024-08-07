@@ -22,8 +22,16 @@
       UniPlace
     </a>
 
+    <!-- <mat-icon
+      *ngIf="isLoggedIn"
+      matBadge="{{ user.notifications.length }}"
+      svgIcon="messageIcon"
+      aria-hidden="false"
+      aria-label="Example thumbs up SVG icon"
+    ></mat-icon> -->
+
     <a
-      *ngIf="isLoggedIn && userType == 'Locador'"
+      *ngIf="isLoggedIn && user.tipoDeUser == 'Locador'"
       mat-raised-button
       routerLink="/create-ad"
       routerLinkActive="active"
@@ -31,7 +39,7 @@
     >
 
     <a
-      *ngIf="isLoggedIn && userType == 'Locatário'"
+      *ngIf="isLoggedIn && user.tipoDeUser == 'Locatário'"
       mat-raised-button
       routerLink="/search"
       routerLinkActive="active"

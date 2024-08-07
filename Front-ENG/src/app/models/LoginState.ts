@@ -1,4 +1,6 @@
+import { UserLogged } from './UserLogged';
+
 export default interface LoginState {
   isLoggedIn: boolean;
-  typeOfUser: string;
+  user: UserLogged;
 }

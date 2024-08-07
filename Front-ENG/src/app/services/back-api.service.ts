@@ -8,10 +8,12 @@ import { RegisterUser } from '../models/RegisterUser';
 import { UserLogin } from '../models/UserLogin';
 import { RoomOptions } from '../models/RoomOptions';
 import { FormGroup } from '@angular/forms';
-import { MockResponsesService } from './mock-responses.service';
+// import { MockResponsesService } from './mock-responses.service';
+import { Router } from '@angular/router';
 
 import { userLoginResponse } from '../models/UserLoginResponse';
 import { AdvertisementRESPONSE } from '../models/AdvertisementRESPONSE';
+import { UserLogged } from '../models/UserLogged';
 
 @Injectable({
   providedIn: 'root',
@@ -28,7 +30,7 @@ export class BackAPIService {
     public http: HttpClient,
     private authService: AuthService,
     private LocalStorage: LocalStorageService,
-    private mockData: MockResponsesService
+    private router: Router // private mockData: MockResponsesService
   ) {
     this.authStatus = authService;
     this.storage = LocalStorage;
@@ -44,12 +46,20 @@ export class BackAPIService {
           if (userLoginResponseOBJ != null) {
             this.storage.set('loggedUser', userLoginResponseOBJ);
             console.log(userLoginResponseOBJ);
-            this.authStatus.login(userLoginResponseOBJ.tipoDeUser);
+            this.authStatus.login(userLoginResponseOBJ);
+            this.router.navigate(['/home']);
           }
         },
         (err) => {
           console.log(err);
         }
+        // Implementando mensagem de erro pro Login.
+        //   {
+        //   this.storage.set('error', {
+        //     message: 'Usuário ou senha inválidos!',
+        //     state: true,
+        //   });
+        // }
       );
   }
   public POSTRegisterUser(newUser: RegisterUser) {
@@ -60,7 +70,7 @@ export class BackAPIService {
         if (registerUserResponseOBJ != null) {
           this.storage.set('loggedUser', registerUserResponseOBJ);
           // console.log(registerUserResponseOBJ);
-          this.authStatus.login(registerUserResponseOBJ.tipoDeUser);
+          this.authStatus.login(registerUserResponseOBJ);
         }
       },
       (err) => {
@@ -77,7 +87,7 @@ export class BackAPIService {
       AdvertisementForm.get('location')!.value,
       AdvertisementForm.get('numberOfRooms')!.value,
       AdvertisementForm.get('nearestCampus')!.value,
-      this.storage.get('loggedUser') as RegisterUser
+      this.storage.get('loggedUser') as UserLogged
       // fotos
     );
     this.http.post('http://localhost:8080/anuncios', ad).subscribe(

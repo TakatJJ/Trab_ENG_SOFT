@@ -1,5 +1,7 @@
 import { FormGroup } from '@angular/forms';
 import { RegisterUser } from './RegisterUser';
+import { BehaviorSubject } from 'rxjs';
+import { UserLogged } from './UserLogged';
 
 export class Advertisement {
   title: string;
@@ -8,7 +10,7 @@ export class Advertisement {
   location: string;
   numberOfRooms: number;
   nearestCampus: string;
-  user: RegisterUser;
+  user: UserLogged;
   // fotos: Array<File>;
   constructor(
     title: string,
@@ -17,7 +19,7 @@ export class Advertisement {
     location: string,
     numberOfRooms: number,
     nearestCampus: string,
-    user: RegisterUser
+    user: UserLogged
     // fotos: Array<File>
   ) {
     this.title = title;

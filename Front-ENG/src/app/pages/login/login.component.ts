@@ -7,11 +7,13 @@ import {
   Validators,
   FormGroup,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UserLogin } from '../../models/UserLogin';
 import { Router } from '@angular/router';
 import { isValidMatricula } from '../../customValidators/isValidMatricula';
 import { MatButtonModule } from '@angular/material/button';
+import { TESTE_LOGIN } from '../../enums/TESTE_LOGIN';
+import { Erro } from '../../models/ErrorModel';
 
 @Component({
   selector: 'app-login',
@@ -46,10 +48,9 @@ export class LoginComponent {
   loginUser() {
     const user = new UserLogin(this.userLogin);
     this.API.GETLoginResponse(user);
-    this.route.navigate(['/home']);
   }
 
   onClick() {
-    this.API.authStatus.login('Locatário');
+    this.API.authStatus.login(TESTE_LOGIN);
   }
 }
