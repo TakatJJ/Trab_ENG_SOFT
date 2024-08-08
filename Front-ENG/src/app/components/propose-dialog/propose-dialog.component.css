@@ -1,0 +1,7 @@
+.buttons-div {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  /* background-color: black; */
+  justify-content: space-between;
+}

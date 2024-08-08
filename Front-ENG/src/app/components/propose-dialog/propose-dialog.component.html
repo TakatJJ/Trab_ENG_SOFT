@@ -1,0 +1,26 @@
+<mat-dialog-content>
+  <mat-card appearance="outlined">
+    <h1 mat-dialog-title>
+      <strong>{{ data.room.titulo }}</strong>
+    </h1>
+  </mat-card>
+  <br />
+  <mat-card appearance="outlined">
+    <h4><strong>Localização:</strong> {{ data.room.localizacao }}</h4>
+    <h5><strong>Preço:</strong> R${{ data.room.preco }}</h5>
+    <h5><strong>Descrição:</strong> {{ data.room.descricao }}</h5>
+  </mat-card>
+  <br />
+  <mat-divider></mat-divider>
+  <br />
+  <h6>Deseja encaminhar a proposta para o Locador?</h6>
+  <!-- <mat-form-field> -->
+  <div class="buttons-div">
+    <button mat-raised-button (click)="onYesClick()" style="margin-right: 50px">
+      Sim!
+    </button>
+    <button mat-raised-button (click)="onCancelClick()">Cancelar</button>
+  </div>
+
+  <!-- </mat-form-field> -->
+</mat-dialog-content>

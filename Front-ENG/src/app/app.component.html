@@ -22,14 +22,6 @@
       UniPlace
     </a>
 
-    <!-- <mat-icon
-      *ngIf="isLoggedIn"
-      matBadge="{{ user.notifications.length }}"
-      svgIcon="messageIcon"
-      aria-hidden="false"
-      aria-label="Example thumbs up SVG icon"
-    ></mat-icon> -->
-
     <a
       *ngIf="isLoggedIn && user.tipoDeUser == 'Locador'"
       mat-raised-button
@@ -54,13 +46,14 @@
       >Login</a
     >
 
-    <a
+    <!-- <a
       *ngIf="isLoggedIn"
       mat-raised-button
+      matBadge="{{ user.notifications.length }}"
       routerLink="/profile"
       routerLinkActive="active"
       >Profile</a
-    >
+    > -->
 
     <a
       *ngIf="isLoggedIn"

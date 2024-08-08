@@ -12,7 +12,7 @@ export class LocalStorageService {
   private storage: TransferState;
   constructor() {
     this.storage = new TransferState();
-    console.log('LocalStorageService initialized');
+    // console.log('LocalStorageService initialized');
   }
 
   set(key: string, value: any): boolean {

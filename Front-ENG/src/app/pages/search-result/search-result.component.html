@@ -25,8 +25,9 @@
         <p><strong>Preço:</strong> R$ {{ room.preco }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button>Fazer Proposta!</button>
-        <!-- <button mat-button>Ver Mais!</button> -->
+        <button mat-raised-button (click)="openDialog(room)">
+          Fazer Proposta!
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>

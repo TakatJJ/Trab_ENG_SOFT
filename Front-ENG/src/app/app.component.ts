@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, makeStateKey } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 import { BackAPIService } from './services/back-api.service';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
-import { DomSanitizer } from '@angular/platform-browser';
 import { UserLogged } from './models/UserLogged';
 
 @Component({
@@ -26,17 +25,7 @@ import { UserLogged } from './models/UserLogged';
 export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
   user = {} as UserLogged;
-  constructor(
-    private API: BackAPIService,
-    private router: Router,
-    private iRegister: MatIconRegistry,
-    private sanitizer: DomSanitizer
-  ) {
-    this.iRegister.addSvgIcon(
-      'messageIcon',
-      this.sanitizer.bypassSecurityTrustResourceUrl('message.svg')
-    );
-  }
+  constructor(private API: BackAPIService, private router: Router) {}
   ngOnInit(): void {
     this.API.authStatus.currentState.subscribe((state) => {
       this.isLoggedIn = state.isLoggedIn;
@@ -53,7 +42,10 @@ export class AppComponent implements OnInit {
 
   onLogout() {
     this.API.authStatus.logout();
-    this.API.storage.remove('loggedUser');
     this.router.navigate(['/home']);
+  }
+
+  onNotificationClick() {
+    this.router.navigate(['/profile']);
   }
 }

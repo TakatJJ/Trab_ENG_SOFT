@@ -1,0 +1,31 @@
+<div class="card-result">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h2>Profile</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="profile">
+        <div class="profile-info">
+          <h3>Olá!, Usuário de matrícula: {{ user.matricula }}</h3>
+          <p>Curso:{{ user.curso }}</p>
+          <p>Email:{{ user.email }}</p>
+          <p>Gênero: {{ user.genero }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <!-- <mat-card
+    *ngFor="let notification of user.notifications"
+    class="example-card"
+    appearance="outlined"
+  >
+    <mat-card-header>
+      <mat-card-title>Solicitação</mat-card-title>
+      <mat-card-subtitle>Status: {{ notification.State }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+    </mat-card-content>
+  </mat-card> -->
+</div>
