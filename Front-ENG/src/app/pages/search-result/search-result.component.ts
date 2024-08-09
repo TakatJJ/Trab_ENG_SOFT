@@ -6,7 +6,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
-import { AdvertisementRESPONSE } from '../../models/AdvertisementRESPONSE';
+import { AdvertisementRESPONSE } from '../../models/Advertisement/AdvertisementRESPONSE';
 import { MatDialog } from '@angular/material/dialog';
 import { ProposeDialogComponent } from '../../components/propose-dialog/propose-dialog.component';
 

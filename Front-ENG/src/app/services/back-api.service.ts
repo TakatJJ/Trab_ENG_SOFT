@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from './auth-service.service';
-import { LocalStorageService } from './local-storage.service';
-import { Advertisement } from '../models/Advertisement';
-import { RegisterUser } from '../models/RegisterUser';
-import { UserLogin } from '../models/UserLogin';
+
+import { Advertisement } from '../models/Advertisement/Advertisement';
+import { RegisterUser } from '../models/User/RegisterUser';
+import { UserLogin } from '../models/User/UserLogin';
 import { RoomOptions } from '../models/RoomOptions';
 import { FormGroup } from '@angular/forms';
 import { MockResponsesService } from './mock-responses.service';
 import { Router } from '@angular/router';
 
-import { userLoginResponse } from '../models/UserLoginResponse';
-import { AdvertisementRESPONSE } from '../models/AdvertisementRESPONSE';
-import { UserLogged } from '../models/UserLogged';
+import { userLoginResponse } from '../models/User/UserLoginResponse';
+import { AdvertisementRESPONSE } from '../models/Advertisement/AdvertisementRESPONSE';
+import { UserLogged } from '../models/User/UserLogged';
 
 @Injectable({
   providedIn: 'root',
@@ -39,8 +39,7 @@ export class BackAPIService {
       .get(`http://localhost:8080/users/${user.getID()}/${user.getSenha()}`)
       .subscribe(
         (res) => {
-          const userLoginResponseOBJ: userLoginResponse =
-            res as userLoginResponse;
+          const userLoginResponseOBJ: UserLogged = res as UserLogged;
           if (userLoginResponseOBJ != null) {
             this.authStatus.login(userLoginResponseOBJ);
             this.router.navigate(['/home']);
@@ -61,8 +60,7 @@ export class BackAPIService {
   public POSTRegisterUser(newUser: RegisterUser) {
     this.http.post('http://localhost:8080/users', newUser).subscribe(
       (res) => {
-        const registerUserResponseOBJ: userLoginResponse =
-          res as userLoginResponse;
+        const registerUserResponseOBJ: UserLogged = res as UserLogged;
         if (registerUserResponseOBJ != null) {
           this.authStatus.login(registerUserResponseOBJ);
         }
@@ -80,7 +78,7 @@ export class BackAPIService {
       AdvertisementForm.get('price')!.value,
       AdvertisementForm.get('location')!.value,
       AdvertisementForm.get('numberOfRooms')!.value,
-      AdvertisementForm.get('')!.value,
+      AdvertisementForm.get('nearestCampus')!.value,
       this.authService.getUser() as UserLogged
       // fotos
     );

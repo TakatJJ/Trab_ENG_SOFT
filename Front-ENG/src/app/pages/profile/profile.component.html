@@ -2,13 +2,13 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        <h2>Profile</h2>
+        <h2>Bem vindo ao seu Profile!</h2>
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="profile">
         <div class="profile-info">
-          <h3>Olá!, Usuário de matrícula: {{ user.matricula }}</h3>
+          <h3>Usuário de matrícula: {{ user.matricula }}</h3>
           <p>Curso:{{ user.curso }}</p>
           <p>Email:{{ user.email }}</p>
           <p>Gênero: {{ user.genero }}</p>
@@ -16,16 +16,34 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <!-- <mat-card
-    *ngFor="let notification of user.notifications"
+  <br />
+  <mat-card
+    *ngFor="let notification of user.minhasNotificacoes"
     class="example-card"
     appearance="outlined"
   >
     <mat-card-header>
-      <mat-card-title>Solicitação</mat-card-title>
-      <mat-card-subtitle>Status: {{ notification.State }}</mat-card-subtitle>
+      <mat-card-title>Solicitação de aluguel:</mat-card-title>
     </mat-card-header>
+    <br />
     <mat-card-content>
+      <mat-card-subtitle
+        >Título: {{ notification.Room.titulo }}</mat-card-subtitle
+      >
+      <mat-card-subtitle
+        >Descrição: {{ notification.Room.descricao }}</mat-card-subtitle
+      >
+      <mat-card-subtitle
+        >Localização: {{ notification.Room.localizacao }}</mat-card-subtitle
+      >
+      <mat-card-subtitle
+        >Preço: R$: {{ notification.Room.preco }}</mat-card-subtitle
+      >
+      <mat-card-subtitle>Status: {{ notification.State }}</mat-card-subtitle>
     </mat-card-content>
-  </mat-card> -->
+    <mat-card-actions *ngIf="user.tipoDeUser == 'Locador'">
+      <button mat-button>Aceitar</button>
+      <button mat-raised-button>Rejeitar</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

@@ -11,7 +11,7 @@ import {
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { AdvertisementRESPONSE } from '../../models/AdvertisementRESPONSE';
+import { AdvertisementRESPONSE } from '../../models/Advertisement/AdvertisementRESPONSE';
 import { MatDivider } from '@angular/material/divider';
 import { MatCard } from '@angular/material/card';
 

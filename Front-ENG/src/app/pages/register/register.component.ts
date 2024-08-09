@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Generos } from '../../enums/generos';
 import { courses } from '../../enums/courses';
 import { CommonModule } from '@angular/common';
-import { RegisterUser } from '../../models/RegisterUser';
+import { RegisterUser } from '../../models/User/RegisterUser';
 import { isUfrgsEmail } from '../../customValidators/isUfrgsEmail';
 import { Router } from '@angular/router';
 import { isValidMatricula } from '../../customValidators/isValidMatricula';

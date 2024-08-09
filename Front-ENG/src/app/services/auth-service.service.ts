@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import LoginState from '../models/LoginState';
-import { UserLogged } from '../models/UserLogged';
+import { UserLogged } from '../models/User/UserLogged';
 import { DEFAULT_LOGOUT } from '../enums/DEFAULT_LOGOUT';
 import { LocalStorageService } from './local-storage.service';
 

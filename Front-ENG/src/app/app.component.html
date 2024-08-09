@@ -46,14 +46,14 @@
       >Login</a
     >
 
-    <!-- <a
+    <a
       *ngIf="isLoggedIn"
       mat-raised-button
-      matBadge="{{ user.notifications.length }}"
+      matBadge="{{ user.minhasNotificacoes.length }}"
       routerLink="/profile"
       routerLinkActive="active"
       >Profile</a
-    > -->
+    >
 
     <a
       *ngIf="isLoggedIn"

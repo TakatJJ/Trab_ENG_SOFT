@@ -1,4 +1,5 @@
-import { RegisterUser } from './RegisterUser';
+import { UserOwner } from '../User/UserOwner';
+import { UserLogged } from '../User/UserLogged';
 
 export class AdvertisementRESPONSE {
   id: number;
@@ -7,7 +8,7 @@ export class AdvertisementRESPONSE {
   preco: number;
   localizacao: string;
   numeroQuartos: number;
-  user: RegisterUser;
+  owner: UserOwner;
   campusProximo: string;
   // fotos: Array<File>;
   constructor(
@@ -17,7 +18,7 @@ export class AdvertisementRESPONSE {
     preco: number,
     localizacao: string,
     numeroQuartos: number,
-    user: RegisterUser,
+    owner: UserOwner,
     campusProximo: string
     // fotos: Array<File>
   ) {
@@ -27,7 +28,7 @@ export class AdvertisementRESPONSE {
     this.preco = preco;
     this.localizacao = localizacao;
     this.numeroQuartos = numeroQuartos;
-    this.user = user;
+    this.owner = owner;
     this.campusProximo = campusProximo;
     // this.fotos = fotos;
   }

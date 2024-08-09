@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Advertisement } from '../models/Advertisement';
+import { Advertisement } from '../models/Advertisement/Advertisement';
 
 @Injectable({
   providedIn: 'root',

@@ -6,7 +6,7 @@ import { BackAPIService } from './services/back-api.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
-import { UserLogged } from './models/UserLogged';
+import { UserLogged } from './models/User/UserLogged';
 
 @Component({
   selector: 'app-root',

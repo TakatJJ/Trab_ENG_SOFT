@@ -1,7 +1,4 @@
-import { FormGroup } from '@angular/forms';
-import { RegisterUser } from './RegisterUser';
-import { BehaviorSubject } from 'rxjs';
-import { UserLogged } from './UserLogged';
+import { UserLogged } from '../User/UserLogged';
 
 export class Advertisement {
   title: string;
@@ -19,7 +16,7 @@ export class Advertisement {
     location: string,
     numberOfRooms: number,
     campusProximo: string,
-    user: UserLogged
+    owner: UserLogged
     // fotos: Array<File>
   ) {
     this.title = title;
@@ -28,7 +25,7 @@ export class Advertisement {
     this.location = location;
     this.numberOfRooms = numberOfRooms;
     this.campusProximo = campusProximo;
-    this.user = user;
+    this.user = owner;
     // this.fotos = fotos;
   }
 }

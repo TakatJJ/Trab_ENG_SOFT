@@ -8,7 +8,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { UserLogin } from '../../models/UserLogin';
+import { UserLogin } from '../../models/User/UserLogin';
 import { Router } from '@angular/router';
 import { isValidMatricula } from '../../customValidators/isValidMatricula';
 import { MatButtonModule } from '@angular/material/button';

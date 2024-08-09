@@ -4,4 +4,5 @@ export const DEFAULT_LOGOUT = {
   email: "",
   genero: "",
   tipoDeUser: "",
+  minhasNotificacoes: [],
 };

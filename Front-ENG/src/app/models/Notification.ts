@@ -1,8 +1,8 @@
-import { AdvertisementRESPONSE } from './AdvertisementRESPONSE';
-import { UserLogged } from './UserLogged';
+import { AdvertisementRESPONSE } from './Advertisement/AdvertisementRESPONSE';
+import { UserLogged } from './User/UserLogged';
 
 export default interface Notification {
-  LocatarioID: string;
+  LocatarioID: number;
   State: string;
   Room: AdvertisementRESPONSE;
 }
