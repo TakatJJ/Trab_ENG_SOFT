@@ -6,6 +6,7 @@ export const TESTE_LOGIN = {
   tipoDeUser: "Locador",
   minhasNotificacoes: [
     {
+      id: 1,
       LocatarioID: 304040,
       State: "Aprovado",
       Room: {
