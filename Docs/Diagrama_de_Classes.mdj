@@ -19697,6 +19697,7 @@
 								"reference": {
 									"$ref": "AAAAAAGRKVbPGP3AKPg="
 								},
+								"navigable": "navigable",
 								"multiplicity": "1"
 							}
 						},
@@ -19796,6 +19797,7 @@
 								"reference": {
 									"$ref": "AAAAAAGRKVDEzf0Nhh0="
 								},
+								"navigable": "navigable",
 								"multiplicity": "1"
 							},
 							"end2": {
@@ -19826,6 +19828,7 @@
 								"reference": {
 									"$ref": "AAAAAAGRKVDEzf0Nhh0="
 								},
+								"navigable": "navigable",
 								"multiplicity": "1"
 							},
 							"end2": {
@@ -20058,6 +20061,7 @@
 								"reference": {
 									"$ref": "AAAAAAGRKVbPGP3AKPg="
 								},
+								"navigable": "navigable",
 								"multiplicity": "1"
 							},
 							"end2": {
@@ -22825,6 +22829,7 @@
 								"reference": {
 									"$ref": "AAAAAAGRKVbPGP3AKPg="
 								},
+								"navigable": "navigable",
 								"multiplicity": "1"
 							}
 						}
