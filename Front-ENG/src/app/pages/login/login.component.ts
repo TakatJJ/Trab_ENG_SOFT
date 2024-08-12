@@ -12,8 +12,8 @@ import { UserLogin } from '../../models/User/UserLogin';
 import { Router } from '@angular/router';
 import { isValidMatricula } from '../../customValidators/isValidMatricula';
 import { MatButtonModule } from '@angular/material/button';
-import { TESTE_LOGIN } from '../../enums/TESTE_LOGIN';
-import { Erro } from '../../models/ErrorModel';
+import { TESTE_LOGIN_LOCATARIO } from '../../enums/TESTE_LOGIN_LOCATARIO';
+import { TESTE_LOGIN_LOCADOR } from '../../enums/TESTE_LOGIN_LOCADOR';
 
 @Component({
   selector: 'app-login',
@@ -50,7 +50,11 @@ export class LoginComponent {
     this.API.GETLoginResponse(user);
   }
 
-  onClick() {
-    this.API.authStatus.login(TESTE_LOGIN);
+  onClickLocador() {
+    this.API.authStatus.login(TESTE_LOGIN_LOCADOR);
+  }
+
+  onClickLocatario() {
+    this.API.authStatus.login(TESTE_LOGIN_LOCATARIO);
   }
 }

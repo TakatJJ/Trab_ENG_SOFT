@@ -25,7 +25,7 @@ public class Anuncio {
     private String localizacao;
     @JsonAlias("numberOfRooms")
     private Long numeroQuartos;
-    @JsonAlias("campusProximo")
+    @JsonAlias("nearestCampus")
     private String campus;
     @ManyToOne
     private User user;

@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { userLoginResponse } from '../models/User/UserLoginResponse';
 import { AdvertisementRESPONSE } from '../models/Advertisement/AdvertisementRESPONSE';
 import { UserLogged } from '../models/User/UserLogged';
+import { Proposta } from '../models/Proposta/Proposta';
 
 @Injectable({
   providedIn: 'root',
@@ -35,27 +36,25 @@ export class BackAPIService {
   }
 
   public GETLoginResponse(user: UserLogin) {
-    this.http
-      .get(`http://localhost:8080/users/${user.getID()}/${user.getSenha()}`)
-      .subscribe(
-        (res) => {
-          const userLoginResponseOBJ: UserLogged = res as UserLogged;
-          if (userLoginResponseOBJ != null) {
-            this.authStatus.login(userLoginResponseOBJ);
-            this.router.navigate(['/home']);
-          }
-        },
-        (err) => {
-          console.log(err);
+    this.http.post(`http://localhost:8080/users/login`, user).subscribe(
+      (res) => {
+        const userLoginResponseOBJ: UserLogged = res as UserLogged;
+        if (userLoginResponseOBJ != null) {
+          this.authStatus.login(userLoginResponseOBJ);
+          this.router.navigate(['/home']);
         }
-        // Implementando mensagem de erro pro Login.
-        //   {
-        //   this.storage.set('error', {
-        //     message: 'Usuário ou senha inválidos!',
-        //     state: true,
-        //   });
-        // }
-      );
+      },
+      (err) => {
+        console.log(err);
+      }
+      // Implementando mensagem de erro pro Login.
+      //   {
+      //   this.storage.set('error', {
+      //     message: 'Usuário ou senha inválidos!',
+      //     state: true,
+      //   });
+      // }
+    );
   }
   public POSTRegisterUser(newUser: RegisterUser) {
     this.http.post('http://localhost:8080/users', newUser).subscribe(
@@ -93,26 +92,44 @@ export class BackAPIService {
   }
 
   public GETSearchRooms(roomOptions: RoomOptions) {
-    // this.http
-    //   .get(
-    //     `http://localhost:8080/anuncios/price?minPreco=${roomOptions.minPrice}&maxPreco=${roomOptions.maxPrice}`
-    //   )
-    //   .subscribe(
-    //     (res) => {
-    //       this.listOfRooms$.next(res as Array<AdvertisementRESPONSE>);
-    //       console.log(res);
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //     }
-    //   );
-    this.listOfRooms$.next(
-      JSON.parse(this.mockData.getRoomData()) as Array<AdvertisementRESPONSE>
-    );
+    this.http
+      .get(
+        `http://localhost:8080/anuncios/price?minPreco=${roomOptions.minPrice}&maxPreco=${roomOptions.maxPrice}`
+      )
+      .subscribe(
+        (res) => {
+          this.listOfRooms$.next(res as Array<AdvertisementRESPONSE>);
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    // this.listOfRooms$.next(
+    //   JSON.parse(this.mockData.getRoomData()) as Array<AdvertisementRESPONSE>
+    // );
 
-    // console.log(this.listOfRooms$.value);
-    return JSON.parse(
-      this.mockData.getRoomData()
-    ) as Array<AdvertisementRESPONSE>;
+    // // console.log(this.listOfRooms$.value);
+    // return JSON.parse(
+    //   this.mockData.getRoomData()
+    // ) as Array<AdvertisementRESPONSE>;
+  }
+
+  POSTPropose(LocatárioID: number, LocadorID: number, RoomId: number) {
+    const propose: Proposta = {
+      LocatarioID: LocatárioID,
+      LocadorID: LocadorID,
+      RoomID: RoomId,
+      State: 'Pendente',
+    };
+
+    this.http.post('http://localhost:8080/propostas', propose).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

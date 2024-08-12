@@ -24,7 +24,7 @@ public class User {
     @JsonAlias("tipoDeUser")
     private String tipoDeUser;
     @OneToMany
-    @JsonAlias("minhasPropostas")
+    @JsonAlias("propostas")
     private List<Proposal> propostas;
     
     

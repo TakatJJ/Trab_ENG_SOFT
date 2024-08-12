@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { AdvertisementRESPONSE } from '../../models/Advertisement/AdvertisementRESPONSE';
 import { MatDivider } from '@angular/material/divider';
 import { MatCard } from '@angular/material/card';
+import { BackAPIService } from '../../services/back-api.service';
 
 interface DialogData {
   room: AdvertisementRESPONSE;
@@ -38,8 +39,9 @@ interface DialogData {
   styleUrl: './propose-dialog.component.css',
 })
 export class ProposeDialogComponent {
-  constructor() {}
+  constructor(private API: BackAPIService) {}
   readonly dialogRef = inject(MatDialogRef<ProposeDialogComponent>);
+
   readonly data = inject<DialogData>(MAT_DIALOG_DATA);
   readonly room = this.data.room;
 
@@ -48,6 +50,12 @@ export class ProposeDialogComponent {
   }
 
   onYesClick(): void {
+    const user = this.API.authStatus.getUser();
+    this.API.POSTPropose(
+      user.matricula,
+      this.room.owner.matricula,
+      this.room.id
+    );
     this.dialogRef.close();
   }
 }

@@ -17,8 +17,40 @@
     </mat-card-content>
   </mat-card>
   <br />
+  @if (user.tipoDeUser == "Locatário") {
   <mat-card
-    *ngFor="let notification of user.minhasNotificacoes"
+    *ngFor="let proposta of user.propostas"
+    class="example-card"
+    appearance="outlined"
+  >
+    <mat-card-header>
+      <mat-card-title>Solicitação de aluguel:</mat-card-title>
+    </mat-card-header>
+    <br />
+    <mat-card-content>
+      <mat-card-subtitle>Título: {{ proposta.Room.titulo }}</mat-card-subtitle>
+      <mat-card-subtitle
+        >Descrição: {{ proposta.Room.descricao }}</mat-card-subtitle
+      >
+      <mat-card-subtitle
+        >Localização: {{ proposta.Room.localizacao }}</mat-card-subtitle
+      >
+      <mat-card-subtitle>
+        Campus mais próximo: {{ proposta.Room.campusProximo }}
+      </mat-card-subtitle>
+      <mat-card-subtitle
+        >Número de quartos vagos:
+        {{ proposta.Room.numeroQuartos }}</mat-card-subtitle
+      >
+      <mat-card-subtitle
+        >Preço: R$: {{ proposta.Room.preco }}</mat-card-subtitle
+      >
+      <mat-card-subtitle>Status: {{ proposta.State }}</mat-card-subtitle>
+    </mat-card-content>
+  </mat-card>
+  } @else {
+  <mat-card
+    *ngFor="let proposta of user.propostas"
     class="example-card"
     appearance="outlined"
   >
@@ -28,22 +60,47 @@
     <br />
     <mat-card-content>
       <mat-card-subtitle
-        >Título: {{ notification.Room.titulo }}</mat-card-subtitle
+        >Matrícula: {{ proposta.Locatario.matricula }}</mat-card-subtitle
       >
       <mat-card-subtitle
-        >Descrição: {{ notification.Room.descricao }}</mat-card-subtitle
+        >Gênero: {{ proposta.Locatario.genero }}</mat-card-subtitle
       >
       <mat-card-subtitle
-        >Localização: {{ notification.Room.localizacao }}</mat-card-subtitle
+        >Curso: {{ proposta.Locatario.curso }}</mat-card-subtitle
       >
-      <mat-card-subtitle
-        >Preço: R$: {{ notification.Room.preco }}</mat-card-subtitle
-      >
-      <mat-card-subtitle>Status: {{ notification.State }}</mat-card-subtitle>
+      <mat-card-subtitle>Status: {{ proposta.State }}</mat-card-subtitle>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>INFORMAÇÕES DO ALOJAMENTO:</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card-subtitle
+            >Título: {{ proposta.Room.titulo }}</mat-card-subtitle
+          >
+          <mat-card-subtitle
+            >Descrição: {{ proposta.Room.descricao }}</mat-card-subtitle
+          >
+          <mat-card-subtitle
+            >Localização: {{ proposta.Room.localizacao }}</mat-card-subtitle
+          >
+          <mat-card-subtitle>
+            Campus mais próximo: {{ proposta.Room.campusProximo }}
+          </mat-card-subtitle>
+          <mat-card-subtitle
+            >Número de pessoas quartos vagos:
+            {{ proposta.Room.numeroQuartos }}</mat-card-subtitle
+          >
+          <mat-card-subtitle
+            >Preço: R$: {{ proposta.Room.preco }}</mat-card-subtitle
+          >
+        </mat-card-content>
+      </mat-card>
+      <mat-card-actions>
+        <button mat-raised-button (click)="onYesClick()">Aceitar</button>
+        <button mat-raised-button (click)="onNoClick()">Rejeitar</button>
+      </mat-card-actions>
     </mat-card-content>
-    <mat-card-actions *ngIf="user.tipoDeUser == 'Locador'">
-      <button mat-button>Aceitar</button>
-      <button mat-raised-button>Rejeitar</button>
-    </mat-card-actions>
   </mat-card>
+  }
 </div>

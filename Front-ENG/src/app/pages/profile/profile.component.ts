@@ -18,4 +18,12 @@ export class ProfileComponent {
   constructor(private API: BackAPIService) {
     this.user = this.API.authStatus.getUser();
   }
+
+  onYesClick() {
+    console.log('Yes');
+  }
+
+  onNoClick() {
+    console.log('No');
+  }
 }
