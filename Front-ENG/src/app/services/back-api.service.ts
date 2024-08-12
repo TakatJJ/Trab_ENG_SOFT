@@ -70,7 +70,7 @@ export class BackAPIService {
     );
   }
 
-  public POSTCreateAd(AdvertisementForm: FormGroup, fotos: File) {
+  public POSTCreateAd(AdvertisementForm: FormGroup) {
     const ad = new Advertisement(
       AdvertisementForm.get('title')!.value,
       AdvertisementForm.get('description')!.value,
@@ -117,13 +117,35 @@ export class BackAPIService {
 
   POSTPropose(LocatárioID: number, LocadorID: number, RoomId: number) {
     const propose: Proposta = {
-      LocatarioID: LocatárioID,
-      LocadorID: LocadorID,
-      RoomID: RoomId,
-      State: 'Pendente',
+      idLocador: LocadorID,
+      idLocatario: LocatárioID,
+      state: 'Pendente',
+      idQuarto: RoomId,
     };
 
-    this.http.post('http://localhost:8080/propostas', propose).subscribe(
+    this.http.post('http://localhost:8080/proposals', propose).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  PUTPropose(proposta: Proposta) {
+    this.http.put(`http://localhost:8080/proposals`, proposta).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
+  DELETEPropose(propostaID: number) {
+    this.http.delete(`http://localhost:8080/proposals/${propostaID}`).subscribe(
       (res) => {
         console.log(res);
       },

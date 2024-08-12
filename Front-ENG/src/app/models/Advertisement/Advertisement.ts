@@ -1,4 +1,5 @@
 import { UserLogged } from '../User/UserLogged';
+import { UserOwner } from '../User/UserOwner';
 
 export class Advertisement {
   title: string;
@@ -6,8 +7,8 @@ export class Advertisement {
   price: number;
   location: string;
   numberOfRooms: number;
-  campusProximo: string;
-  user: UserLogged;
+  nearestCampus: string;
+  owner: UserOwner;
   // fotos: Array<File>;
   constructor(
     title: string,
@@ -15,7 +16,7 @@ export class Advertisement {
     price: number,
     location: string,
     numberOfRooms: number,
-    campusProximo: string,
+    nearestCampus: string,
     owner: UserLogged
     // fotos: Array<File>
   ) {
@@ -24,8 +25,17 @@ export class Advertisement {
     this.price = price;
     this.location = location;
     this.numberOfRooms = numberOfRooms;
-    this.campusProximo = campusProximo;
-    this.user = owner;
+    this.nearestCampus = nearestCampus;
+    this.owner = this.resolveOwner(owner);
     // this.fotos = fotos;
+  }
+
+  resolveOwner(owner: UserLogged): UserOwner {
+    return {
+      matricula: owner.matricula,
+      curso: owner.curso,
+      email: owner.email,
+      genero: owner.genero,
+    } as UserOwner;
   }
 }

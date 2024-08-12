@@ -1,9 +1,9 @@
 import { AdvertisementRESPONSE } from '../Advertisement/AdvertisementRESPONSE';
 import { UserRenter } from '../User/UserRenter';
 
-export default interface Proposta {
+export interface PropostaRESPONSE {
   id: number;
-  Locatario: UserRenter;
-  State: string;
-  Room: AdvertisementRESPONSE;
+  locatario: UserRenter;
+  state: string;
+  room: AdvertisementRESPONSE;
 }

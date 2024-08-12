@@ -53,7 +53,7 @@ export class CreateADComponent {
   });
   allCampus = Campus.filter((campus) => campus != 'Todos');
   onSubmit() {
-    if (this.Advertisement.valid && this.foto.size > 0) {
+    if (this.Advertisement.valid) {
       this.createAd();
     }
   }
@@ -67,7 +67,7 @@ export class CreateADComponent {
 
   createAd() {
     console.log(this.foto);
-    this.API.POSTCreateAd(this.Advertisement, this.foto);
+    this.API.POSTCreateAd(this.Advertisement);
     this.router.navigate(['/home']);
   }
 

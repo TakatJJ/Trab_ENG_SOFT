@@ -53,7 +53,7 @@ export class ProposeDialogComponent {
     const user = this.API.authStatus.getUser();
     this.API.POSTPropose(
       user.matricula,
-      this.room.owner.matricula,
+      this.room.dono.matricula,
       this.room.id
     );
     this.dialogRef.close();

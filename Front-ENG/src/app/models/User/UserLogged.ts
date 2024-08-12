@@ -1,4 +1,4 @@
-import Proposta from '../Proposta/PropostaRESPONSE';
+import { PropostaRESPONSE } from '../Proposta/PropostaRESPONSE';
 
 export interface UserLogged {
   matricula: number;
@@ -6,5 +6,5 @@ export interface UserLogged {
   email: string;
   genero: string;
   tipoDeUser: string;
-  propostas: Array<Proposta>;
+  propostas: Array<PropostaRESPONSE>;
 }

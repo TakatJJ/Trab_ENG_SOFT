@@ -28,24 +28,25 @@
     </mat-card-header>
     <br />
     <mat-card-content>
-      <mat-card-subtitle>Título: {{ proposta.Room.titulo }}</mat-card-subtitle>
+      <mat-card-subtitle>Título: {{ proposta.room.titulo }}</mat-card-subtitle>
       <mat-card-subtitle
-        >Descrição: {{ proposta.Room.descricao }}</mat-card-subtitle
+        >Descrição: {{ proposta.room.descricao }}</mat-card-subtitle
       >
       <mat-card-subtitle
-        >Localização: {{ proposta.Room.localizacao }}</mat-card-subtitle
+        >Localização: {{ proposta.room.localizacao }}</mat-card-subtitle
       >
       <mat-card-subtitle>
-        Campus mais próximo: {{ proposta.Room.campusProximo }}
+        Campus mais próximo: {{ proposta.room.campusProximo }}
       </mat-card-subtitle>
       <mat-card-subtitle
         >Número de quartos vagos:
-        {{ proposta.Room.numeroQuartos }}</mat-card-subtitle
+        {{ proposta.room.numeroQuartos }}</mat-card-subtitle
       >
       <mat-card-subtitle
-        >Preço: R$: {{ proposta.Room.preco }}</mat-card-subtitle
+        >Preço: R$: {{ proposta.room.preco }}</mat-card-subtitle
       >
-      <mat-card-subtitle>Status: {{ proposta.State }}</mat-card-subtitle>
+      <mat-card-subtitle>Status: {{ proposta.state }}</mat-card-subtitle>
+      <button mat-raised-button (click)="onNoClick(proposta)">Rejeitar</button>
     </mat-card-content>
   </mat-card>
   } @else {
@@ -60,15 +61,15 @@
     <br />
     <mat-card-content>
       <mat-card-subtitle
-        >Matrícula: {{ proposta.Locatario.matricula }}</mat-card-subtitle
+        >Matrícula: {{ proposta.locatario.matricula }}</mat-card-subtitle
       >
       <mat-card-subtitle
-        >Gênero: {{ proposta.Locatario.genero }}</mat-card-subtitle
+        >Gênero: {{ proposta.locatario.genero }}</mat-card-subtitle
       >
       <mat-card-subtitle
-        >Curso: {{ proposta.Locatario.curso }}</mat-card-subtitle
+        >Curso: {{ proposta.locatario.curso }}</mat-card-subtitle
       >
-      <mat-card-subtitle>Status: {{ proposta.State }}</mat-card-subtitle>
+      <mat-card-subtitle>Status: {{ proposta.state }}</mat-card-subtitle>
 
       <mat-card>
         <mat-card-header>
@@ -76,29 +77,33 @@
         </mat-card-header>
         <mat-card-content>
           <mat-card-subtitle
-            >Título: {{ proposta.Room.titulo }}</mat-card-subtitle
+            >Título: {{ proposta.room.titulo }}</mat-card-subtitle
           >
           <mat-card-subtitle
-            >Descrição: {{ proposta.Room.descricao }}</mat-card-subtitle
+            >Descrição: {{ proposta.room.descricao }}</mat-card-subtitle
           >
           <mat-card-subtitle
-            >Localização: {{ proposta.Room.localizacao }}</mat-card-subtitle
+            >Localização: {{ proposta.room.localizacao }}</mat-card-subtitle
           >
           <mat-card-subtitle>
-            Campus mais próximo: {{ proposta.Room.campusProximo }}
+            Campus mais próximo: {{ proposta.room.campusProximo }}
           </mat-card-subtitle>
           <mat-card-subtitle
             >Número de pessoas quartos vagos:
-            {{ proposta.Room.numeroQuartos }}</mat-card-subtitle
+            {{ proposta.room.numeroQuartos }}</mat-card-subtitle
           >
           <mat-card-subtitle
-            >Preço: R$: {{ proposta.Room.preco }}</mat-card-subtitle
+            >Preço: R$: {{ proposta.room.preco }}</mat-card-subtitle
           >
         </mat-card-content>
       </mat-card>
       <mat-card-actions>
-        <button mat-raised-button (click)="onYesClick()">Aceitar</button>
-        <button mat-raised-button (click)="onNoClick()">Rejeitar</button>
+        <button mat-raised-button (click)="onYesClick(proposta)">
+          Aceitar
+        </button>
+        <button mat-raised-button (click)="onNoClick(proposta)">
+          Rejeitar
+        </button>
       </mat-card-actions>
     </mat-card-content>
   </mat-card>

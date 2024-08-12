@@ -7,15 +7,15 @@ export const TESTE_LOGIN_LOCADOR = {
   propostas: [
     {
       id: 1,
-      Locatario: {
+      locatario: {
         matricula: 304040,
         curso: "Engenharia de Computação",
         email: "lelele@ufrgs.br",
         genero: "Masculino",
         tipoDeUser: "Locatario",
       },
-      State: "Aprovado",
-      Room: {
+      state: "Aprovado",
+      room: {
         id: 1,
         titulo: "Quarto 1",
         descricao: "Quarto 1",
@@ -23,7 +23,7 @@ export const TESTE_LOGIN_LOCADOR = {
         localizacao: "Rua 1",
         numeroQuartos: 5,
         campusProximo: "Campus do Vale",
-        owner: {
+        dono: {
           matricula: 374040,
           curso: "Engenharia da Computação",
           email: "oi2@ufrgs.br",

@@ -1,6 +1,6 @@
 export interface Proposta {
-  LocatarioID: number;
-  LocadorID: number;
-  State: string;
-  RoomID: number;
+  idLocador: number;
+  idLocatario: number;
+  state: string;
+  idQuarto: number;
 }
