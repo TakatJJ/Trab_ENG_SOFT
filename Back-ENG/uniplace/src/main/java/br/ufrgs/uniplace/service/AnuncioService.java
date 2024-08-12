@@ -25,5 +25,9 @@ public class AnuncioService {
         return anunciosList.toArray(new Anuncio[0]);
     }
 
+    public Anuncio findAnuncioById(Long id) {
+        return anuncioRepository.findById(id).orElse(null);
+    }
+
 
 }

@@ -1,12 +1,10 @@
 package br.ufrgs.uniplace.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -23,6 +21,11 @@ public class User {
     private String email;
     @JsonAlias("genero")
     private String genero;
+    @JsonAlias("tipoDeUser")
+    private String tipoDeUser;
+    @OneToMany
+    @JsonAlias("minhasPropostas")
+    private List<Proposal> propostas;
     
     
 }
