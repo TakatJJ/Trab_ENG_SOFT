@@ -1,10 +1,15 @@
 package br.ufrgs.uniplace.controller;
 
-import br.ufrgs.uniplace.model.User;
+import br.ufrgs.uniplace.model.*;
 import br.ufrgs.uniplace.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,6 +32,48 @@ public class UserController {
             return ResponseEntity.status(404).build();
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> getUser(@RequestBody UserLoginRequest userLoginRequest) {
+        Long matricula = userLoginRequest.getMatricula();
+        String senha = userLoginRequest.getSenha();
+
+        User user = userService.findUserByMatriculaAndSenha(matricula, senha);
+
+        if (user != null) {
+            // Cria uma lista de respostas para as propostas
+            List<ProposalResponse> propostasResponses = new ArrayList<>();
+
+            for (Proposal proposal : user.getPropostas()) {
+                ProposalResponse response = new ProposalResponse();
+                response.setId(proposal.getIdProposal());
+                response.setState(proposal.getState());
+
+                if (user.getTipoDeUser().equals("Locador")) {
+                    // Pega o locatário da proposta
+                    User locatario = userService.findUserById(proposal.getIdLocatario());
+                    response.setLocador(locatario);
+                } else if (user.getTipoDeUser().equals("Locatário")) {
+                    // Pega o anúncio (quarto) da proposta
+                    //Anuncio anuncio = anuncioService.findAnuncioById(proposal.getIdQuarto());
+                    Anuncio anuncio = null;
+                    response.setRoom(anuncio);
+                }
+
+                propostasResponses.add(response);
+            }
+
+            // Cria um objeto customizado para a resposta que inclui o User e as propostas personalizadas
+            Map<String, Object> customResponse = new HashMap<>();
+            customResponse.put("user", user);
+            customResponse.put("propostas", propostasResponses);
+
+            return ResponseEntity.ok(customResponse);
+        } else {
+            return ResponseEntity.status(404).build();
+        }
+    }
+
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
