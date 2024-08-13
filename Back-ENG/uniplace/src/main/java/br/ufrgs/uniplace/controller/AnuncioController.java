@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import br.ufrgs.uniplace.DTO.AnuncioDTOs.AnuncioDTO;
 
-
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -19,7 +19,7 @@ public class AnuncioController {
     private final AnuncioService anuncioService;
 
     @PostMapping
-    public ResponseEntity<Anuncio> createAnuncio(@RequestBody AnuncioDTO anuncioDTO) {
+    public ResponseEntity<Anuncio> createAnuncio(@RequestBody AnuncioDTO anuncioDTO) throws IOException {
         System.out.println("AnuncioDTO: " + anuncioDTO);
         Anuncio savedAnuncio = anuncioService.saveAnuncio(anuncioDTO);
         return ResponseEntity.ok(savedAnuncio);
@@ -28,7 +28,6 @@ public class AnuncioController {
     @GetMapping
     public ResponseEntity<List<Anuncio>> getAnuncios() {
         List<Anuncio> anuncios = anuncioService.findAllAnuncios();
-
         return ResponseEntity.ok(anuncios);
     }
 

@@ -30,6 +30,8 @@ public class AnuncioDTO {
     private String campus;
     @JsonAlias("owner")
     private UserOwnerDTO dono;
+    @JsonAlias("photo")
+    private String foto;
 
     public AnuncioDTO(Anuncio anuncio) {
         this.id = anuncio.getId();
@@ -40,6 +42,7 @@ public class AnuncioDTO {
         this.numeroQuartos = anuncio.getNumeroQuartos();
         this.campus = anuncio.getCampus();
         this.dono = new UserOwnerDTO(anuncio.getUser());
+        this.foto = anuncio.getFoto();
     }
 
     public AnuncioDTO() {

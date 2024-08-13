@@ -21,8 +21,8 @@ import { Campus } from '../../enums/Campus';
 })
 export class CreateADComponent {
   private API: BackAPIService;
-  private foto: File = new File([], '');
-
+  private foto: string = '';
+  public foto2: string = '';
   constructor(APIService: BackAPIService, private router: Router) {
     this.API = APIService;
   }
@@ -53,21 +53,14 @@ export class CreateADComponent {
   });
   allCampus = Campus.filter((campus) => campus != 'Todos');
   onSubmit() {
-    if (this.Advertisement.valid) {
+    if (this.Advertisement.valid && this.foto != null) {
       this.createAd();
     }
   }
 
-  uploadPhoto(foto: File) {
-    // const fileRef = ref(this.FireStorage, foto.name);
-    // uploadBytes(fileRef, foto).then((snapshot) => {
-    //   console.log('Uploaded a blob or file!');
-    // });
-  }
-
   createAd() {
     console.log(this.foto);
-    this.API.POSTCreateAd(this.Advertisement);
+    this.API.POSTCreateAd(this.Advertisement, this.foto);
     this.router.navigate(['/home']);
   }
 
@@ -77,8 +70,18 @@ export class CreateADComponent {
 
   onChange(event: any) {
     if (event.target.files.length > 0) {
-      this.foto = event.target.files[0];
-      console.log(this.foto);
+      this.getBase64(event.target.files[0]).then((res) => {
+        this.foto = res as string;
+      });
     }
+  }
+
+  getBase64(file: File) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   }
 }

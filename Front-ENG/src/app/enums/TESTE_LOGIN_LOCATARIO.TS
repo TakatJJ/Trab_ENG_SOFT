@@ -14,11 +14,12 @@ export const TESTE_LOGIN_LOCATARIO = {
         genero: "Masculino",
         tipoDeUser: "Locatario",
       },
-      state: "Aprovado",
+      state: "Aceito",
       room: {
         id: 1,
         titulo: "Quarto 1",
         descricao: "Quarto 1",
+        foto: "",
         preco: 1000,
         localizacao: "Rua 1",
         numeroQuartos: 5,

@@ -46,6 +46,7 @@ export class BackAPIService {
       },
       (err) => {
         console.log(err);
+        alert('Erro ao fazer login');
       }
       // Implementando mensagem de erro pro Login.
       //   {
@@ -66,11 +67,12 @@ export class BackAPIService {
       },
       (err) => {
         console.log(err);
+        alert('Erro ao registrar usuário');
       }
     );
   }
 
-  public POSTCreateAd(AdvertisementForm: FormGroup) {
+  public POSTCreateAd(AdvertisementForm: FormGroup, foto: string) {
     const ad = new Advertisement(
       AdvertisementForm.get('title')!.value,
       AdvertisementForm.get('description')!.value,
@@ -78,15 +80,18 @@ export class BackAPIService {
       AdvertisementForm.get('location')!.value,
       AdvertisementForm.get('numberOfRooms')!.value,
       AdvertisementForm.get('nearestCampus')!.value,
-      this.authService.getUser() as UserLogged
-      // fotos
+      this.authService.getUser() as UserLogged,
+      foto
     );
+    console.log(ad);
+
     this.http.post('http://localhost:8080/anuncios', ad).subscribe(
       (res) => {
         console.log(res);
       },
       (err) => {
         console.log(err);
+        alert('Erro ao criar anúncio');
       }
     );
   }
@@ -103,13 +108,14 @@ export class BackAPIService {
         },
         (err) => {
           console.log(err);
+          alert('Erro ao buscar quartos');
         }
       );
     // this.listOfRooms$.next(
     //   JSON.parse(this.mockData.getRoomData()) as Array<AdvertisementRESPONSE>
     // );
 
-    // // console.log(this.listOfRooms$.value);
+    // console.log(this.listOfRooms$.value);
     // return JSON.parse(
     //   this.mockData.getRoomData()
     // ) as Array<AdvertisementRESPONSE>;
@@ -129,6 +135,7 @@ export class BackAPIService {
       },
       (err) => {
         console.log(err);
+        alert('Erro ao fazer proposta');
       }
     );
   }
@@ -140,6 +147,7 @@ export class BackAPIService {
       },
       (err) => {
         console.log(err);
+        alert('Erro ao aceitar/Rejeitar proposta');
       }
     );
   }
@@ -151,6 +159,7 @@ export class BackAPIService {
       },
       (err) => {
         console.log(err);
+        alert('Erro ao deletar proposta');
       }
     );
   }

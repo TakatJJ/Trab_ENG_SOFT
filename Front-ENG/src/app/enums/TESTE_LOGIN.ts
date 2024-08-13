@@ -8,10 +8,11 @@ export const TESTE_LOGIN = {
     {
       id: 1,
       LocatarioID: 304040,
-      State: "Aprovado",
+      State: "Aceito",
       Room: {
         id: 1,
         titulo: "Quarto 1",
+        foto: "",
         descricao: "Quarto 1",
         preco: 1000,
         localizacao: "Rua 1",
