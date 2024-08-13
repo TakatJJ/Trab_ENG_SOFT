@@ -31,6 +31,8 @@ public class Anuncio {
     private String campus;
     @ManyToOne
     private User user;
+    @JsonAlias("photo")
+    private String foto;
 
     public Anuncio(AnuncioDTO anuncio, User user) {
         this.id = anuncio.getId();
@@ -41,6 +43,7 @@ public class Anuncio {
         this.numeroQuartos = anuncio.getNumeroQuartos();
         this.campus = anuncio.getCampus();
         this.user = user;
+        this.foto = anuncio.getFoto();
     }
 
     public Anuncio() {

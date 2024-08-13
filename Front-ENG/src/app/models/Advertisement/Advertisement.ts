@@ -9,7 +9,7 @@ export class Advertisement {
   numberOfRooms: number;
   nearestCampus: string;
   owner: UserOwner;
-  // fotos: Array<File>;
+  foto: string;
   constructor(
     title: string,
     description: string,
@@ -17,8 +17,8 @@ export class Advertisement {
     location: string,
     numberOfRooms: number,
     nearestCampus: string,
-    owner: UserLogged
-    // fotos: Array<File>
+    owner: UserLogged,
+    foto: string
   ) {
     this.title = title;
     this.description = description;
@@ -27,7 +27,7 @@ export class Advertisement {
     this.numberOfRooms = numberOfRooms;
     this.nearestCampus = nearestCampus;
     this.owner = this.resolveOwner(owner);
-    // this.fotos = fotos;
+    this.foto = foto;
   }
 
   resolveOwner(owner: UserLogged): UserOwner {

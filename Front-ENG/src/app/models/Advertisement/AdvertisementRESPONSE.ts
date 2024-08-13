@@ -10,7 +10,7 @@ export class AdvertisementRESPONSE {
   numeroQuartos: number;
   dono: UserOwner;
   campusProximo: string;
-  // fotos: Array<File>;
+  foto: string;
   constructor(
     id: number,
     titulo: string,
@@ -19,8 +19,8 @@ export class AdvertisementRESPONSE {
     localizacao: string,
     numeroQuartos: number,
     dono: UserOwner,
-    campusProximo: string
-    // fotos: Array<File>
+    campusProximo: string,
+    foto: string
   ) {
     this.id = id;
     this.titulo = titulo;
@@ -30,6 +30,6 @@ export class AdvertisementRESPONSE {
     this.numeroQuartos = numeroQuartos;
     this.dono = dono;
     this.campusProximo = campusProximo;
-    // this.fotos = fotos;
+    this.foto = foto;
   }
 }

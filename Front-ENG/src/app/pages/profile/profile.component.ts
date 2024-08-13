@@ -19,7 +19,13 @@ export class ProfileComponent {
   public user!: UserLogged;
   constructor(private API: BackAPIService) {
     this.user = this.API.authStatus.getUser();
+    for (const proposta of this.user.propostas) {
+      if (proposta.state == 'Aceito') {
+        this.renda += proposta.room.preco;
+      }
+    }
   }
+  public renda = 0;
 
   onYesClick(PropostaRESPONSE: PropostaRESPONSE) {
     console.log('Yes');

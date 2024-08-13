@@ -12,6 +12,10 @@
           <p>Curso:{{ user.curso }}</p>
           <p>Email:{{ user.email }}</p>
           <p>Gênero: {{ user.genero }}</p>
+          <p>Tipo de usuário: {{ user.tipoDeUser }}</p>
+          @if (user.tipoDeUser == "Locador") {
+          <p>Renda: R$ {{ renda }}</p>
+          }
         </div>
       </div>
     </mat-card-content>
@@ -46,7 +50,14 @@
         >Preço: R$: {{ proposta.room.preco }}</mat-card-subtitle
       >
       <mat-card-subtitle>Status: {{ proposta.state }}</mat-card-subtitle>
-      <button mat-raised-button (click)="onNoClick(proposta)">Rejeitar</button>
+      @if (proposta.state=="Pendente") {
+      <p>{{ proposta.state }}</p>
+      <button mat-raised-button (click)="onNoClick(proposta)">Excluir</button>
+      } @if (proposta.state=="Aceito") {
+      <button mat-raised-button (click)="onNoClick(proposta)">
+        Cancelar aluguel
+      </button>
+      }
     </mat-card-content>
   </mat-card>
   } @else {
@@ -98,12 +109,16 @@
         </mat-card-content>
       </mat-card>
       <mat-card-actions>
+        @if (proposta.state == "Pendente") {
         <button mat-raised-button (click)="onYesClick(proposta)">
           Aceitar
         </button>
+        <button mat-raised-button (click)="onNoClick(proposta)">Rejeitar</button
+        >} @if (proposta.state == "Aceito") {
         <button mat-raised-button (click)="onNoClick(proposta)">
-          Rejeitar
+          Cancelar aluguel
         </button>
+        }
       </mat-card-actions>
     </mat-card-content>
   </mat-card>
