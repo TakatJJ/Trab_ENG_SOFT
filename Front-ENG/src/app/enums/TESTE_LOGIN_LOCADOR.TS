@@ -1,3 +1,5 @@
+import { Campus } from "./Campus";
+
 export const TESTE_LOGIN_LOCADOR = {
   matricula: 304040,
   curso: "Engenharia de Computação",
@@ -23,7 +25,7 @@ export const TESTE_LOGIN_LOCADOR = {
         foto: "",
         localizacao: "Rua 1",
         numeroQuartos: 5,
-        campusProximo: "Campus do Vale",
+        campus: "Campus do Vale",
         dono: {
           matricula: 374040,
           curso: "Engenharia da Computação",

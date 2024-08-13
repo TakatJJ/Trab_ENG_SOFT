@@ -40,7 +40,7 @@
         >Localização: {{ proposta.room.localizacao }}</mat-card-subtitle
       >
       <mat-card-subtitle>
-        Campus mais próximo: {{ proposta.room.campusProximo }}
+        Campus mais próximo: {{ proposta.room.campus }}
       </mat-card-subtitle>
       <mat-card-subtitle
         >Número de quartos vagos:
@@ -51,7 +51,6 @@
       >
       <mat-card-subtitle>Status: {{ proposta.state }}</mat-card-subtitle>
       @if (proposta.state=="Pendente") {
-      <p>{{ proposta.state }}</p>
       <button mat-raised-button (click)="onNoClick(proposta)">Excluir</button>
       } @if (proposta.state=="Aceito") {
       <button mat-raised-button (click)="onNoClick(proposta)">
@@ -97,7 +96,7 @@
             >Localização: {{ proposta.room.localizacao }}</mat-card-subtitle
           >
           <mat-card-subtitle>
-            Campus mais próximo: {{ proposta.room.campusProximo }}
+            Campus mais próximo: {{ proposta.room.campus }}
           </mat-card-subtitle>
           <mat-card-subtitle
             >Número de pessoas quartos vagos:

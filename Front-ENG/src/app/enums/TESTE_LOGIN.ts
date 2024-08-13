@@ -17,7 +17,7 @@ export const TESTE_LOGIN = {
         preco: 1000,
         localizacao: "Rua 1",
         numeroQuartos: 5,
-        campusProximo: "Campus do Vale",
+        campus: "Campus do Vale",
         owner: {
           matricula: 374040,
           curso: "Engenharia da Computação",

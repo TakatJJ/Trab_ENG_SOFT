@@ -9,7 +9,7 @@ export class AdvertisementRESPONSE {
   localizacao: string;
   numeroQuartos: number;
   dono: UserOwner;
-  campusProximo: string;
+  campus: string;
   foto: string;
   constructor(
     id: number,
@@ -19,7 +19,7 @@ export class AdvertisementRESPONSE {
     localizacao: string,
     numeroQuartos: number,
     dono: UserOwner,
-    campusProximo: string,
+    campus: string,
     foto: string
   ) {
     this.id = id;
@@ -29,7 +29,7 @@ export class AdvertisementRESPONSE {
     this.localizacao = localizacao;
     this.numeroQuartos = numeroQuartos;
     this.dono = dono;
-    this.campusProximo = campusProximo;
+    this.campus = campus;
     this.foto = foto;
   }
 }

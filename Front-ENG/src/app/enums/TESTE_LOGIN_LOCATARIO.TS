@@ -23,7 +23,7 @@ export const TESTE_LOGIN_LOCATARIO = {
         preco: 1000,
         localizacao: "Rua 1",
         numeroQuartos: 5,
-        campusProximo: "Campus do Vale",
+        campus: "Campus do Vale",
         dono: {
           matricula: 374040,
           curso: "Engenharia da Computação",
