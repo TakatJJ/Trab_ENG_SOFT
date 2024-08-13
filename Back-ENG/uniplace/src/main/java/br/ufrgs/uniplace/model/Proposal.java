@@ -4,7 +4,11 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "propostas")
 @Data
@@ -13,15 +17,18 @@ public class Proposal {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @JsonAlias("numero")
+    @JsonAlias("id")
     private Long idProposal;
-    @JsonAlias("LocatárioID")
+    @JsonAlias("idLocatario")
     private Long idLocatario;
-    @JsonAlias("LocadorID")
+    @JsonAlias("idLocador")
     private Long idLocador;
-    @JsonAlias("RoomId")
+    @JsonAlias("idQuarto")
     private Long idQuarto;
-    @JsonAlias("State")
+    @JsonAlias("state")
     private String state;
+
+    public Proposal() {
+    }
 
 }

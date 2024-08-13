@@ -1,4 +1,4 @@
-import Notification from '../Notification';
+import { PropostaRESPONSE } from '../Proposta/PropostaRESPONSE';
 
 export interface UserLogged {
   matricula: number;
@@ -6,5 +6,5 @@ export interface UserLogged {
   email: string;
   genero: string;
   tipoDeUser: string;
-  minhasNotificacoes: Array<Notification>;
+  propostas: Array<PropostaRESPONSE>;
 }

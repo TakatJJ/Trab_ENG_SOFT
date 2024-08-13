@@ -1,6 +1,8 @@
 package br.ufrgs.uniplace.model;
 
 
+import br.ufrgs.uniplace.DTO.AnuncioDTOs.AnuncioDTO;
+import br.ufrgs.uniplace.DTO.UserDTOs.UserRenterDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class ProposalResponse {
     private Long id;
-    private User Locador;
+    private UserRenterDTO Locatario;
     private String State;
-    private Anuncio Room;
+    private AnuncioDTO Room;
 }

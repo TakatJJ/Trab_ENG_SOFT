@@ -8,7 +8,7 @@ export class AdvertisementRESPONSE {
   preco: number;
   localizacao: string;
   numeroQuartos: number;
-  owner: UserOwner;
+  dono: UserOwner;
   campusProximo: string;
   // fotos: Array<File>;
   constructor(
@@ -18,7 +18,7 @@ export class AdvertisementRESPONSE {
     preco: number,
     localizacao: string,
     numeroQuartos: number,
-    owner: UserOwner,
+    dono: UserOwner,
     campusProximo: string
     // fotos: Array<File>
   ) {
@@ -28,7 +28,7 @@ export class AdvertisementRESPONSE {
     this.preco = preco;
     this.localizacao = localizacao;
     this.numeroQuartos = numeroQuartos;
-    this.owner = owner;
+    this.dono = dono;
     this.campusProximo = campusProximo;
     // this.fotos = fotos;
   }

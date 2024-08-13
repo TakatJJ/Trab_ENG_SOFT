@@ -1,6 +1,8 @@
 package br.ufrgs.uniplace.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+
+import br.ufrgs.uniplace.DTO.UserDTOs.UserOwnerDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,8 +26,8 @@ public class User {
     @JsonAlias("tipoDeUser")
     private String tipoDeUser;
     @OneToMany
-    @JsonAlias("minhasPropostas")
+    @JsonAlias("propostas")
     private List<Proposal> propostas;
-    
+
     
 }

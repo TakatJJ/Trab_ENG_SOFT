@@ -18,6 +18,7 @@ public class ProposalController{
 
     @PutMapping
     public Proposal UpdateProposta(@RequestBody Proposal new_proposal){
+        System.out.println(new_proposal.getIdProposal());
         Proposal proposal = proposalService.findProposalByidProposal(new_proposal.getIdProposal());
         proposal.setState(new_proposal.getState());
         return proposalService.saveProposal(proposal);
